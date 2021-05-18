@@ -2,7 +2,7 @@
 
 This is a repository to document what I've learned while taking the [JavaScript: Understanding the Weird Parts](https://www.udemy.com/course/understand-javascript/) Udemy course by [Anthony Alicea](https://www.udemy.com/course/understand-javascript/#instructor-1).
 
-### Objective
+### Course Objectives
 - Grasp how JavaScript works, and it's fundamental concepts
 - Write solid JavaScript code
 - Understand advanced concepts such as closures, prototypal inheritance, IIFEs, etc.
@@ -10,13 +10,11 @@ This is a repository to document what I've learned while taking the [JavaScript:
 - Avoid common JavaScript pitfalls and mistakes
 - Understand the source code of popular JavaScript frameworks
 
-### What I Learned
+### What I've Learned
 
 Coming Soon 😊
 
 #### [Back To Top](#javascript-understanding-the-weird-parts)
-
----
 
 ## Author
 
