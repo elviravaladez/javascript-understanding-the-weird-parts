@@ -7,6 +7,8 @@ This is a repository to document what I've learned while taking the [JavaScript:
 - [What I Learned](#what-i-learned)
 - [Author](#author)
 
+---
+
 ### Objective
 - Grasp how JavaScript works, and it's fundamental concepts
 - Write solid JavaScript code
