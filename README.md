@@ -12,7 +12,13 @@ This is a repository to document what I've learned while taking the [JavaScript:
 
 ### What I've Learned
 
-Coming Soon 😊
+#### JavaScript and `undefined`
+It is recommended to NEVER set a variable's value to `undefined`. Following this practice makes it easier to debug because, as a developer, you are now able to associate `undefined` with "I've never set the value of this variable."
+
+❌ Don't do this️
+```js
+var a = undefined;
+```
 
 #### [Back To Top](#javascript-understanding-the-weird-parts)
 
