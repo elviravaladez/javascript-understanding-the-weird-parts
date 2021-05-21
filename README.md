@@ -19,6 +19,7 @@ It is recommended to NEVER set a variable's value to `undefined`. Following this
 ```js
 var a = undefined;
 ```
+---
 
 JavaScript is single threaded, synchronous execution in its behavior.
 
