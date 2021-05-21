@@ -20,6 +20,11 @@ It is recommended to NEVER set a variable's value to `undefined`. Following this
 var a = undefined;
 ```
 
+JavaScript is single threaded, synchronous execution in its behavior.
+
+- Single Threaded: One command at a time
+- Synchronous: One at a time
+
 #### [Back To Top](#javascript-understanding-the-weird-parts)
 
 ## Author
