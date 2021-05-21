@@ -48,14 +48,49 @@
 
 //The Execution Context Code
 //CODE:
+// function b() {
+//     console.log('Called b!');
+// }
+//
+// b();
+//
+// console.log(a);
+//
+// var a = 'Hello World!';
+//
+// console.log(a);
+
+
+//FUNCTION INVOCATION AND THE EXECUTION STACK
+//CODE:
+// function b() {
+//
+// }
+//
+// function a() {
+//     b();
+// }
+//
+// a();
+
+//FUNCTIONS, CONTEXT, AND VARIABLE ENVIRONMENTS
+
+//Variable Environment: where the variables live and how they relate to each other in memory
 function b() {
-    console.log('Called b!');
+    var myVar;
+    console.log(myVar);//undefined
 }
 
-b();
+function a() {
+    var myVar = 2;
+    console.log(myVar); //2
+    b();
+}
 
-console.log(a);
+var myVar = 1;
 
-var a = 'Hello World!';
-
-console.log(a);
+console.log(myVar); //1
+a();
+//2
+//undefined
+console.log(myVar); //1
