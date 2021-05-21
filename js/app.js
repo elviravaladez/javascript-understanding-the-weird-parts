@@ -29,19 +29,33 @@
 //JavaScript and 'undefined;
 
 //CODE:
-var a;
-// var a = "Hello World";
-console.log(a); //undefined
-
-if (a === undefined) {
-    console.log('a is undefined!');
-}
-else {
-    console.log('a is defined!');
-}
+// var a;
+// // var a = "Hello World";
+// console.log(a); //undefined
+//
+// if (a === undefined) {
+//     console.log('a is undefined!');
+// }
+// else {
+//     console.log('a is defined!');
+// }
 
 
 //NEVER set a variable to undefined b/c it helps with debugging to let you know that you've never set the value of the variable
 
 //CODE:
 // a = undefined;
+
+//The Execution Context Code
+//CODE:
+function b() {
+    console.log('Called b!');
+}
+
+b();
+
+console.log(a);
+
+var a = 'Hello World!';
+
+console.log(a);
