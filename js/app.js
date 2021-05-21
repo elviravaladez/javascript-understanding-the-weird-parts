@@ -25,7 +25,6 @@
 // }
 
 
-
 //JavaScript and 'undefined;
 
 //CODE:
@@ -73,24 +72,45 @@
 //
 // a();
 
-//FUNCTIONS, CONTEXT, AND VARIABLE ENVIRONMENTS
 
+//FUNCTIONS, CONTEXT, AND VARIABLE ENVIRONMENTS
 //Variable Environment: where the variables live and how they relate to each other in memory
+
+//CODE:
+// function b() {
+//     var myVar;
+//     console.log(myVar);//undefined
+// }
+//
+// function a() {
+//     var myVar = 2;
+//     console.log(myVar); //2
+//     b();
+// }
+//
+// var myVar = 1;
+//
+// console.log(myVar); //1
+// a();
+// //2
+// //undefined
+// console.log(myVar); //1
+
+
+//THE SCOPE CHAIN
+
+//CODE:
 function b() {
-    var myVar;
-    console.log(myVar);//undefined
+    console.log(myVar);
 }
 
 function a() {
     var myVar = 2;
-    console.log(myVar); //2
     b();
 }
 
 var myVar = 1;
+a(); //1
 
-console.log(myVar); //1
-a();
-//2
-//undefined
-console.log(myVar); //1
+//lexical environment: where the code is written within the code and where it will sit in memory
+// 1 is logged because myVar is  before running the a()
