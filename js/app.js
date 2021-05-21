@@ -114,3 +114,17 @@ a(); //1
 
 //lexical environment: where the code is written within the code and where it will sit in memory
 // 1 is logged because myVar is  before running the a()
+
+
+//SCOPE, ES6, AND let
+//Scope: Where a variable is available in your code, and if it's truly the same variable, or a new copy
+
+//CODE:
+
+if(a > b) {
+    let c = true;
+}
+
+for(let i = 0; i <= 10; i++) {
+    console.log(i);
+}
