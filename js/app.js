@@ -238,23 +238,44 @@
 
 //CODE:
 
-var a;
-a = null;
+// var a;
+// a = null;
+//
+// if(a) {
+//     console.log('Something is there.');
+// } else {
+//     console.log('nothing there');
+// }
+//
+// //if "a" is undefined, null or "" it will be converted to false
+//
+// var b;
+// b = 0;
+//
+// if(b || b === 0) {//false || true -> true
+//     console.log('Something is there.');
+// } else {
+//     console.log('nothing there');
+// }
+// //output: Something is there.
 
-if(a) {
-    console.log('Something is there.');
-} else {
-    console.log('nothing there');
+
+//DEFAULT VALUES
+
+//CODE:
+function greet(name) {
+    name = name || '<Your name here>'; // if name is undefined or "" or null we will get '<Your name here>'
+    console.log('Hello ' + name);
 }
+greet('Tony');//Hello Tony
+greet(0); //Hello <Your name here>
+greet(); //Hello <Your name here>
 
-//if "a" is undefined, null or "" it will be converted to false
-
-var b;
-b = 0;
-
-if(b || b === 0) {//false || true -> true
-    console.log('Something is there.');
-} else {
-    console.log('nothing there');
-}
-//output: Something is there.
+console.log(true || false); //true
+console.log(undefined || 'hello'); //"hello"
+Boolean("hello"); //true
+console.log("hi" || "hello"); //"hi"
+console.log(0 || 1); //1
+console.log(undefined || "hello"); //"hello"
+console.log(null || "hello"); //"hello"
+console.log("" || "hello"); //"hello"
