@@ -134,21 +134,21 @@
 
 //CODE:
 //long running function
-function waitThreeSeconds() {
-    var ms = 3000 + new Date().getTime();
-    while(new Date() < ms) {}
-    console.log('finished function');
-}
-
-function clickHandler() {
-    console.log('click event!');
-}
-
-//listen for the click event
-document.addEventListener('click', clickHandler);
-
-waitThreeSeconds();
-console.log('finished execution');
+// function waitThreeSeconds() {
+//     var ms = 3000 + new Date().getTime();
+//     while(new Date() < ms) {}
+//     console.log('finished function');
+// }
+//
+// function clickHandler() {
+//     console.log('click event!');
+// }
+//
+// //listen for the click event
+// document.addEventListener('click', clickHandler);
+//
+// waitThreeSeconds();
+// console.log('finished execution');
 //JS looks at the execution stack first, THEN looks at the event queue (click handlers, etc.)
 
 
@@ -181,9 +181,54 @@ console.log('finished execution');
 //COERCION-converting a value from one type to another
 
 //CODE:
-var a = 1 + '2';
-console.log(a); //12 -> outputs like a string b/c 1 is coerced as a string, therefore, the output is '12'
-//this is possible b/c JS is dynamically typed
+// var a = 1 + '2';
+// console.log(a); //12 -> outputs like a string b/c 1 is coerced as a string, therefore, the output is '12'
+// //this is possible b/c JS is dynamically typed
 
 // var a = 1, b = '2';
 // console.log(a + b);//12 (as a string)
+
+
+//COMPARISON OPERATORS
+
+//CODE:
+
+console.log(1 < 2 < 3); //true b/c what is really happening is -> true < 3. true coerces to 1, which makes 1 < 3, which gives us true
+console.log(3 < 2 < 1); //true b/c what is really happening is -> false < 1. false coerces to 0, which makes 0 < 1, which gives us true
+
+//Double Equals (Equality) Examples
+console.log(3 == 3); //true
+console.log(3 === "3"); //false
+console.log(false == 0); //true
+console.log(null == 0); //false
+//null DOES NOT coerce to 0 for comparison
+console.log(null < 1);//true
+console.log("" == 0); //true
+console.log("" == false); //true
+
+//Triple Equals (Strict Equality) Examples
+console.log(3 === 3); //true
+console.log("3" === "3"); //true
+console.log(3 === "3");//false
+
+
+var a = 0;
+var b = false;
+
+//Not the best option
+if(a == b) {
+    console.log('They are equal. Woo-hoo!');
+} else {
+    console.log('Nope, not equal.');
+}
+//Output: They are equal. Woo-hoo!
+
+//Best option
+if(a === b) {
+    console.log('They are equal. Woo-hoo!');
+} else {
+    console.log('Nope, not equal.');
+}
+//Output: Nope, not equal.
+
+//Reminder: Use triple equals by default

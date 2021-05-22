@@ -32,6 +32,8 @@ isNew = 'yes!';
 isNew = 1;
 ```
 
+`null` DOES NOT coerce to `0` for comparison.
+
 #### [Back To Top](#javascript-understanding-the-weird-parts)
 
 ## Author
