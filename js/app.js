@@ -193,42 +193,68 @@
 
 //CODE:
 
-console.log(1 < 2 < 3); //true b/c what is really happening is -> true < 3. true coerces to 1, which makes 1 < 3, which gives us true
-console.log(3 < 2 < 1); //true b/c what is really happening is -> false < 1. false coerces to 0, which makes 0 < 1, which gives us true
-
-//Double Equals (Equality) Examples
-console.log(3 == 3); //true
-console.log(3 === "3"); //false
-console.log(false == 0); //true
-console.log(null == 0); //false
-//null DOES NOT coerce to 0 for comparison
-console.log(null < 1);//true
-console.log("" == 0); //true
-console.log("" == false); //true
-
-//Triple Equals (Strict Equality) Examples
-console.log(3 === 3); //true
-console.log("3" === "3"); //true
-console.log(3 === "3");//false
-
-
-var a = 0;
-var b = false;
-
-//Not the best option
-if(a == b) {
-    console.log('They are equal. Woo-hoo!');
-} else {
-    console.log('Nope, not equal.');
-}
-//Output: They are equal. Woo-hoo!
-
-//Best option
-if(a === b) {
-    console.log('They are equal. Woo-hoo!');
-} else {
-    console.log('Nope, not equal.');
-}
+// console.log(1 < 2 < 3); //true b/c what is really happening is -> true < 3. true coerces to 1, which makes 1 < 3, which gives us true
+// console.log(3 < 2 < 1); //true b/c what is really happening is -> false < 1. false coerces to 0, which makes 0 < 1, which gives us true
+//
+// //Double Equals (Equality) Examples
+// console.log(3 == 3); //true
+// console.log(3 === "3"); //false
+// console.log(false == 0); //true
+// console.log(null == 0); //false
+// //null DOES NOT coerce to 0 for comparison
+// console.log(null < 1);//true
+// console.log("" == 0); //true
+// console.log("" == false); //true
+//
+// //Triple Equals (Strict Equality) Examples
+// console.log(3 === 3); //true
+// console.log("3" === "3"); //true
+// console.log(3 === "3");//false
+//
+//
+// var a = 0;
+// var b = false;
+//
+// //Not the best option
+// if(a == b) {
+//     console.log('They are equal. Woo-hoo!');
+// } else {
+//     console.log('Nope, not equal.');
+// }
+// //Output: They are equal. Woo-hoo!
+//
+// //Best option
+// if(a === b) {
+//     console.log('They are equal. Woo-hoo!');
+// } else {
+//     console.log('Nope, not equal.');
+// }
 //Output: Nope, not equal.
 
 //Reminder: Use triple equals by default
+
+
+//EXISTENCE AND BOOLEANS
+
+//CODE:
+
+var a;
+a = null;
+
+if(a) {
+    console.log('Something is there.');
+} else {
+    console.log('nothing there');
+}
+
+//if "a" is undefined, null or "" it will be converted to false
+
+var b;
+b = 0;
+
+if(b || b === 0) {//false || true -> true
+    console.log('Something is there.');
+} else {
+    console.log('nothing there');
+}
+//output: Something is there.
