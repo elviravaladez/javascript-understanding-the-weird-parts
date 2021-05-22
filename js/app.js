@@ -100,17 +100,17 @@
 //THE SCOPE CHAIN
 
 //CODE:
-function b() {
-    console.log(myVar);
-}
-
-function a() {
-    var myVar = 2;
-    b();
-}
-
-var myVar = 1;
-a(); //1
+// function b() {
+//     console.log(myVar);
+// }
+//
+// function a() {
+//     var myVar = 2;
+//     b();
+// }
+//
+// var myVar = 1;
+// a(); //1
 
 //lexical environment: where the code is written within the code and where it will sit in memory
 // 1 is logged because myVar is  before running the a()
@@ -120,14 +120,13 @@ a(); //1
 //Scope: Where a variable is available in your code, and if it's truly the same variable, or a new copy
 
 //CODE:
-
-if(a > b) {
-    let c = true;
-}
-
-for(let i = 0; i <= 10; i++) {
-    console.log(i);
-}
+// if(a > b) {
+//     let c = true;
+// }
+//
+// for(let i = 0; i <= 10; i++) {
+//     console.log(i);
+// }
 
 //ASYNCHRONOUS
 
@@ -151,3 +150,28 @@ document.addEventListener('click', clickHandler);
 waitThreeSeconds();
 console.log('finished execution');
 //JS looks at the execution stack first, THEN looks at the event queue (click handlers, etc.)
+
+
+//OPERATOR PRECEDENCE AND ASSOCIATIVITY
+
+//Operator Precedence-which operator function gets called first. Functions are called in order of precedence(higher precedence wins)
+
+//Operator Associativity-what order operator functions get called in: left to right or right to left. When functions have the same precedence
+
+//CODE:
+// var a = 3 + 4 * 5;
+// console.log(a);
+
+
+//Associativity Example
+
+var a = 2, b = 3, c = 4;
+
+a = b = c;
+console.log(a); //4
+console.log(b); //4
+console.log(c); //4
+//The assignment operator has an associativity of right-to-left, which is why a, b, and c equal 4
+
+var num = (3 + 4) * 5;
+console.log(num);//35
