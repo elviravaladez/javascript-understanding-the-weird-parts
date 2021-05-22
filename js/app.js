@@ -165,13 +165,25 @@ console.log('finished execution');
 
 //Associativity Example
 
-var a = 2, b = 3, c = 4;
+//CODE:
 
-a = b = c;
-console.log(a); //4
-console.log(b); //4
-console.log(c); //4
-//The assignment operator has an associativity of right-to-left, which is why a, b, and c equal 4
+// var a = 2, b = 3, c = 4;
+// a = b = c;
+// console.log(a); //4
+// console.log(b); //4
+// console.log(c); //4
+// //The assignment operator has an associativity of right-to-left, which is why a, b, and c equal 4
+//
+// var num = (3 + 4) * 5;
+// console.log(num);//35
 
-var num = (3 + 4) * 5;
-console.log(num);//35
+
+//COERCION-converting a value from one type to another
+
+//CODE:
+var a = 1 + '2';
+console.log(a); //12 -> outputs like a string b/c 1 is coerced as a string, therefore, the output is '12'
+//this is possible b/c JS is dynamically typed
+
+// var a = 1, b = '2';
+// console.log(a + b);//12 (as a string)
