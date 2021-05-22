@@ -263,6 +263,7 @@
 //DEFAULT VALUES
 
 //CODE:
+
 function greet(name) {
     name = name || '<Your name here>'; // if name is undefined or "" or null we will get '<Your name here>'
     console.log('Hello ' + name);
@@ -279,3 +280,10 @@ console.log(0 || 1); //1
 console.log(undefined || "hello"); //"hello"
 console.log(null || "hello"); //"hello"
 console.log("" || "hello"); //"hello"
+
+
+//FRAMEWORK ASIDE: DEFAULT VALUES
+
+//CODE:
+
+console.log(libraryName);//Lib 1
