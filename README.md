@@ -53,6 +53,29 @@ var person = {
 };
 ```
 
+#### JSON (JavaScript Object Notation)
+
+JavaScript object literals and JSON are different, although they look very similar syntax-wise. 
+
+A JSON name/value pair consists of a field name (in double quotes), followed by a colon, followed by a value. In JSON, keys MUST be strings, written in double quotes.
+
+JSON Syntax:
+```json
+{
+    "firstName": "Mary",
+    "isAProgrammer": true
+}
+```
+
+Object Literal Syntax:
+```js
+var objectLiteral = {
+    firstName: 'Sam',
+    isAProgrammer: true
+}
+```
+
+
 #### [Back To Top](#javascript-understanding-the-weird-parts)
 
 ## Author

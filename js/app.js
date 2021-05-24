@@ -381,7 +381,7 @@ console.log(english);//{greet: "Hello!"}
 console.log(spanish);//{greet: "Hola!"}
 
 //cannot do this
-english.greetings.greet = 'Hello!';//english.greetings is undefined
+// english.greetings.greet = 'Hello!';//english.greetings is undefined
 //returns undefined.greet
 
 //instead do this
@@ -395,3 +395,28 @@ var english = {
 };
 
 english.greetings.greet = 'Hello!';
+
+
+//JSON -> JavaScript Object Notation
+
+//CODE:
+
+var objectLiteral = {
+    firstName: 'Sam',
+    isAProgrammer: true
+}
+
+//for any object you can do JSON.stringify to convert the object to a JSON string
+console.log(JSON.stringify(objectLiteral));//{"firstName":"Sam","isAProgrammer":true}
+
+var jsonValue = JSON.parse('{ "firstName":"Sam", "isAProgrammer":true}')
+
+console.log(jsonValue);//{firstName: "Sam", isAProgrammer: true}
+
+
+//JSON syntax
+//anything that is json valid is valid object literal js syntax
+// {
+//     "firstName": "Mary",
+//     "isAProgrammer": true
+// }
