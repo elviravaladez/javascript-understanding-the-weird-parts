@@ -317,3 +317,41 @@ person.address.state = "NY";
 console.log(person.address.street); //111 Main St
 console.log(person.address.city);//New York
 console.log(person["address"]["state"]); //NY
+
+
+//OBJECTS AND OBJECT LITERALS
+
+//CODE:
+
+var person1 = {};
+console.log(person1);//empty object
+
+var john = {
+    firstName: 'John',
+    lastName: 'Doe',
+    address: {
+        street: '111 Main St.',
+        city: 'New York',
+        state: 'NY'
+    }
+};//object literal
+console.log(john);
+
+function greet1(person) {
+    console.log('Hi, ' + person.firstName);
+}
+
+greet1(john);//Hi, John
+
+
+//valid object literal syntax to create an object on the fly, when the function is called
+greet1({
+    firstName: 'Jane',
+    lastName: 'Doe'
+});// Hi, Jane
+
+john.address2 = {
+    street: '222 Second St.'
+}
+
+//Object literal syntax can make for clean/easy to read code

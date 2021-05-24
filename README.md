@@ -38,6 +38,21 @@ isNew = 1;
 #### Objects
 A JavaScript object can have primitive properties, object properties, and/or function "methods."
 
+Object literals are the preferred way to create an object.
+
+Object Literal Example:
+```js
+var person = {
+    firstName: 'John',
+    lastName: 'Doe',
+    address: {
+        street: '111 Main St.',
+        city: 'New York',
+        state: 'NY'
+    }
+};
+```
+
 #### [Back To Top](#javascript-understanding-the-weird-parts)
 
 ## Author
