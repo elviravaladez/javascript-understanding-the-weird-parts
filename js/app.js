@@ -355,3 +355,43 @@ john.address2 = {
 }
 
 //Object literal syntax can make for clean/easy to read code
+
+
+//FAKING NAMESPACES
+
+//A namespace is a container for variables and functions. Typically used to keep variables and functions with the same name separate.
+//JS does not have namespaces.B/c of the nature of objects in JS, we don't need namespaces.
+
+
+//CODE:
+
+var greet = 'Hello!';
+var greet = 'Hola!';
+
+console.log(greet);//Hola!
+
+//object literal syntax
+var english = {};
+var spanish = {};
+
+english.greet = 'Hello!';
+spanish.greet = 'Hola!';
+
+console.log(english);//{greet: "Hello!"}
+console.log(spanish);//{greet: "Hola!"}
+
+//cannot do this
+english.greetings.greet = 'Hello!';//english.greetings is undefined
+//returns undefined.greet
+
+//instead do this
+english.greetings = {};
+
+//or initialize like this:
+var english = {
+    greetings: {
+        basic: 'Hello!'
+    }
+};
+
+english.greetings.greet = 'Hello!';
