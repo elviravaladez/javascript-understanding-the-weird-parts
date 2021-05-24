@@ -287,3 +287,33 @@ console.log("" || "hello"); //"hello"
 //CODE:
 
 console.log(libraryName);//Lib 1
+
+
+//OBJECTS AND FUNCTIONS
+
+//CODE:
+
+var person = new Object();//there are better ways to do this
+
+person["firstName"] = "Sam"; //adding a property via the computed member access operator -> []
+person["lastName"] = "Conrad";
+
+var firstNameProperty = "firstName";
+console.log(person);//{firstName: "Sam"
+                    //lastName: "Conrad"}
+console.log(person[firstNameProperty]);//Sam
+
+//dot operator -> more common operator for accessing properties and methods
+//Preferred approach is to use the dot operator (ALWAYS USE THE DOT OPERATOR)
+console.log(person.firstName);//Sam
+console.log(person.lastName); //Conrad
+
+//object sitting inside another object
+person.address = new Object();//not the preferred way to create an object
+person.address.street = "111 Main St";
+person.address.city = "New York";
+person.address.state = "NY";
+
+console.log(person.address.street); //111 Main St
+console.log(person.address.city);//New York
+console.log(person["address"]["state"]); //NY

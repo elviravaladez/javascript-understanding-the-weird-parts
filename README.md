@@ -34,6 +34,10 @@ isNew = 1;
 
 `null` DOES NOT coerce to `0` for comparison.
 
+
+#### Objects
+A JavaScript object can have primitive properties, object properties, and/or function "methods."
+
 #### [Back To Top](#javascript-understanding-the-weird-parts)
 
 ## Author
