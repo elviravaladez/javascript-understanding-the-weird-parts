@@ -436,22 +436,77 @@
 
 //CODE:
 
-//Think of a function as an object whose code just happens to be one of the properties of that object.
+// //Think of a function as an object whose code just happens to be one of the properties of that object.
+// function greet() {
+//     console.log('hi');
+// }
+//
+// //adding a property to a function
+// greet.language = 'english';
+//
+// //not helpful
+// console.log(greet);
+// //ƒ greet() {
+// //     console.log('hi');
+// // }
+//
+//
+// //helpful
+// console.log(greet.language);//english
+
+
+//FUNCTION STATEMENTS AND FUNCTION EXPRESSIONS
+//
+
+//CODE:
+
+//Function Statement: B/c it doesn't result in a value
+greet();//hi
+
 function greet() {
     console.log('hi');
 }
 
-//adding a property to a function
-greet.language = 'english';
+//don't try this BEFORE the var anonymousGreet b/c function expressions ARE NOT hoisted. Your var anonymousGreet will be set to undefined in memory when you call anonymousGreet() and you will get an error
+// anonymousGreet();
 
-//not helpful
-console.log(greet);
-//ƒ greet() {
-//     console.log('hi');
+//Function Expression
+var anonymousGreet = function() {
+    console.log('hi');
+}
+
+
+//instead do this
+anonymousGreet();
+
+// function log(a) {
+//     console.log(a);
 // }
 
+// //creating on the fly
+// log(3); //3
+// log("Hello"); //Hello
+// console.log({
+//     greeting: 'hi'
+// });//{ greeting: 'hi' }
 
-//helpful
-console.log(greet.language);//english
+
+// //creating a function on the fly. Passing a function to a function
+// log(function() {
+//     console.log('hi');
+// });
+//
+// //function() {
+// //  console.log('hi');
+// //}
 
 
+//how to invoke/run a passed function
+function log(a) {
+    a();
+}
+
+//passing a function to a function
+log(function() {
+    console.log('hi');
+});

@@ -105,6 +105,28 @@ greet.language = 'english';
 console.log(greet.language);//english
 ```
 
+#### Function Statements and Function Expressions
+
+Statement: Just do work.
+
+Expression: A unit of code that results in a value. It doesn't have to save to a variable. Function expressions are NOT hoisted.
+
+Function Statement Example (doesn't result in a value)
+```js
+//when this code is executed, it doesn't do anything, even though it is saved to memory
+function greet() {
+    console.log('hi');
+}
+```
+
+Function Expression Example (results in a value)
+```js
+//when this code is executed, the anonymous function results in an object being created. It returns an object
+var anonymousGreet = function() {
+    console.log('hi');
+}
+```
+
 #### [Back To Top](#javascript-understanding-the-weird-parts)
 
 ## Author
