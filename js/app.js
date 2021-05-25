@@ -634,3 +634,69 @@ var arr = [
 console.log(arr);//[1, false, {name: "Jane", address: "111 Main St."}, ƒ (name), "hello"]
 
 arr[3](arr[2].name);//Hello Jane
+
+
+//'arguments' and SPREAD
+//Arguments: the parameters you pass to a function
+//JS gives you a keyword of the same name which contains them all
+
+//CODE:
+
+function greet(firstName, lastName, language) {
+    console.log(firstName);
+    console.log(lastName);
+    console.log(language);
+    console.log('--------------');
+}
+
+greet();
+//undefined
+//undefined
+//undefined
+// --------------
+//hoisting takes care of these unset parameters in the invoked greet()
+
+greet('John');
+//John
+// undefined
+// undefined
+// --------------
+
+greet('John', 'Doe');
+//John
+//Doe
+// undefined
+// --------------
+
+greet('John', 'Doe', 'es');
+//John
+//Doe
+//es
+// --------------
+
+
+function greetings(firstName, lastName, language) {
+
+    language = language || 'en';//language will equal 'en' if undefined
+
+    if(arguments.length === 0) {
+        console.log('Missing parameters!');
+        console.log('--------------');
+        return;
+    }
+
+    console.log(firstName);
+    console.log(lastName);
+    console.log(language);
+    console.log(arguments);
+    console.log('arg 0: ' + arguments[0]);
+    //keyword arguments outputs a list of all the values that you passed.
+    // It is array-like. It acts and looks like an array, but it doesn't have all the features of an array
+    console.log('--------------');
+}
+
+
+greetings();
+greetings('John');
+greetings('John', 'Doe');
+greetings('John', 'Doe', 'es');
