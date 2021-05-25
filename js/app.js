@@ -608,3 +608,29 @@ var c = {
 c.log();
 ////{name: "Updated c object", log: ƒ}
 //{name: "Updated again! The c object", log: ƒ}
+
+
+//ARRAYS - Collections of anything
+
+//CODE:
+
+// var arr = new Array();
+//or
+var arr = [
+    1,
+    false,
+    {
+        name: 'Jane',
+        address: '111 Main St.'
+    },
+    function (name) {
+        var greeting = 'Hello ';
+        console.log(greeting + name);
+    },
+    "hello"
+];
+
+//JS arrays are diff. b/c
+console.log(arr);//[1, false, {name: "Jane", address: "111 Main St."}, ƒ (name), "hello"]
+
+arr[3](arr[2].name);//Hello Jane
