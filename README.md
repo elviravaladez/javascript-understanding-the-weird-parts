@@ -130,6 +130,37 @@ var anonymousGreet = function() {
 #### By Value and By Reference
 All primitive types are by value. All objects (including functions) are by reference.
 
+#### Automatic Semicolon Insertion
+
+Syntax parser: reads your code
+
+Anywhere the JS engine thinks a semicolon should be present, if it's missing, it will automatically insert a semicolon. To avoid running into errors with this, always use semicolons, rather than having the JS engine make that decision for you to avoid potential errors.
+
+
+❌ Don't do this:
+```js
+function getPeron() {
+    
+    return //the JS engine automatically inserted a semicolon here, which results in "undefined" when this function is invoked
+    {
+        firstName: 'John'
+    }
+}
+
+console.log(getPeron());//undefined
+```
+
+✅ Do this instead:
+```js
+function getPeron() {
+    return { //keep the curly brace on the same line to prevent the JS engine from automatically inserting a semicolon
+        firstName: 'John'
+    }
+}
+
+console.log(getPeron());//undefined
+```
+
 #### [Back To Top](#javascript-understanding-the-weird-parts)
 
 ## Author
