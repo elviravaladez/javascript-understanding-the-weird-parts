@@ -11,7 +11,6 @@ This is a repository to document what I've learned while taking the [JavaScript:
 - Understand the source code of popular JavaScript frameworks
 
 ### What I've Learned
-
 It is recommended to NEVER set a variable's value to `undefined`. Following this practice makes it easier to debug because, as a developer, you are now able to associate `undefined` with "I've never set the value of this variable."
 
 ❌ Don't do this️
@@ -54,7 +53,6 @@ var person = {
 ```
 
 #### JSON (JavaScript Object Notation)
-
 JavaScript object literals and JSON are different, although they look very similar syntax-wise. 
 
 A JSON name/value pair consists of a field name (in double quotes), followed by a colon, followed by a value. In JSON, keys MUST be strings, written in double quotes.
@@ -106,7 +104,6 @@ console.log(greet.language);//english
 ```
 
 #### Function Statements and Function Expressions
-
 Statement: Just does work.
 
 Expression: A unit of code that results in a value. It doesn't have to save to a variable. Function expressions are NOT hoisted.
@@ -131,7 +128,6 @@ var anonymousGreet = function() {
 All primitive types are by value. All objects (including functions) are by reference.
 
 #### Automatic Semicolon Insertion
-
 Syntax parser: reads your code
 
 Anywhere the JS engine thinks a semicolon should be present, if it's missing, it will automatically insert a semicolon. To avoid running into errors with this, always use semicolons, rather than having the JS engine make that decision for you to avoid potential errors.
