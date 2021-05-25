@@ -127,6 +127,8 @@ var anonymousGreet = function() {
     console.log('hi');
 }
 ```
+#### By Value and By Reference
+All primitive types are by value. All objects (including functions) are by reference.
 
 #### [Back To Top](#javascript-understanding-the-weird-parts)
 

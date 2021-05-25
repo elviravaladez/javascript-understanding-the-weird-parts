@@ -510,3 +510,51 @@ function log(a) {
 log(function() {
     console.log('hi');
 });
+
+
+//BY VALUE (primitives)
+
+//CODE:
+
+var a = 3;
+var b;
+
+b = a; //3
+//var b in memory has a new spot of memory as a copy of a
+
+b = a;
+a = 2;//when changing a, has no value on b b/c b is just a copy of the previous a value
+console.log(a);//2
+console.log(b);//3
+
+//by reference (all objects (including functions))
+var c = { greeting: 'hi' };
+var d;
+
+d = c;
+c.greeting = 'hello'; //mutate
+//mutate: to change something.
+// "immutable" means it can't be changed
+
+console.log(c);//{ greeting: 'hello' }
+console.log(d);//{ greeting: 'hello' }
+
+//The output is { greeting: 'hello' } b/c they are pointing to the same place in memory (set equal to each other by reference)
+
+
+//by reference (even as parameters)
+function changeGreeting(obj) {
+    obj.greeting = 'hola'; //mutate
+}
+
+changeGreeting(d);
+
+console.log(c);// { greeting: 'hola' }
+console.log(d);// { greeting: 'hola' }
+
+
+//equals operator sets up new memory space (new address)
+c = { greeting: 'howdy' };
+//that's why d is not effected by the change above
+console.log(c); //{ greeting: 'howdy' }
+console.log(d);//{ greeting: 'hola' };
