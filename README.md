@@ -121,7 +121,8 @@ function greet() {
 
 Function Expression Example (results in a value):
 ```js
-//when this code is executed, the anonymous function results in an object being created. It returns an object
+//when this code is executed, the anonymous function results in an object being created. 
+// It returns an object
 var anonymousGreet = function() {
     console.log('hi');
 }
