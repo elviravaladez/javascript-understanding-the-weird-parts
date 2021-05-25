@@ -75,6 +75,35 @@ var objectLiteral = {
 }
 ```
 
+#### Functions are Objects
+In JavaScript, functions are a special type of object.
+
+First class functions: everything you can do with other types (objects, strings, numbers, booleans, etc.) you can do with functions. Example: Assign them to variables, pass them around, create them on the fly.
+
+- What does a function object look like in JavaScript?
+    - Like all objects in JavaScript, it resides in memory
+    - Has all the features of a normal object, in addition to other special properties (name and code)
+    - You can attach properties and methods to a function, because it's just an object
+    - Properties include:
+        - Primitive
+        - Object
+        - Function
+        - Name (optional, can be anonymous)
+        - Code
+            - Where the actual lines of code you write, sit
+            - "Invocable" ()
+
+```js
+function greet() {
+    console.log('hi');
+}
+
+//adding a property to a function
+greet.language = 'english';
+
+//finding the property using the dot operator
+console.log(greet.language);//english
+```
 
 #### [Back To Top](#javascript-understanding-the-weird-parts)
 

@@ -264,95 +264,95 @@
 
 //CODE:
 
-function greet(name) {
-    name = name || '<Your name here>'; // if name is undefined or "" or null we will get '<Your name here>'
-    console.log('Hello ' + name);
-}
-greet('Tony');//Hello Tony
-greet(0); //Hello <Your name here>
-greet(); //Hello <Your name here>
-
-console.log(true || false); //true
-console.log(undefined || 'hello'); //"hello"
-Boolean("hello"); //true
-console.log("hi" || "hello"); //"hi"
-console.log(0 || 1); //1
-console.log(undefined || "hello"); //"hello"
-console.log(null || "hello"); //"hello"
-console.log("" || "hello"); //"hello"
+// function greet(name) {
+//     name = name || '<Your name here>'; // if name is undefined or "" or null we will get '<Your name here>'
+//     console.log('Hello ' + name);
+// }
+// greet('Tony');//Hello Tony
+// greet(0); //Hello <Your name here>
+// greet(); //Hello <Your name here>
+//
+// console.log(true || false); //true
+// console.log(undefined || 'hello'); //"hello"
+// Boolean("hello"); //true
+// console.log("hi" || "hello"); //"hi"
+// console.log(0 || 1); //1
+// console.log(undefined || "hello"); //"hello"
+// console.log(null || "hello"); //"hello"
+// console.log("" || "hello"); //"hello"
 
 
 //FRAMEWORK ASIDE: DEFAULT VALUES
 
 //CODE:
 
-console.log(libraryName);//Lib 1
+// console.log(libraryName);//Lib 1
 
 
 //OBJECTS AND FUNCTIONS
 
 //CODE:
 
-var person = new Object();//there are better ways to do this
-
-person["firstName"] = "Sam"; //adding a property via the computed member access operator -> []
-person["lastName"] = "Conrad";
-
-var firstNameProperty = "firstName";
-console.log(person);//{firstName: "Sam"
-                    //lastName: "Conrad"}
-console.log(person[firstNameProperty]);//Sam
-
-//dot operator -> more common operator for accessing properties and methods
-//Preferred approach is to use the dot operator (ALWAYS USE THE DOT OPERATOR)
-console.log(person.firstName);//Sam
-console.log(person.lastName); //Conrad
-
-//object sitting inside another object
-person.address = new Object();//not the preferred way to create an object
-person.address.street = "111 Main St";
-person.address.city = "New York";
-person.address.state = "NY";
-
-console.log(person.address.street); //111 Main St
-console.log(person.address.city);//New York
-console.log(person["address"]["state"]); //NY
+// var person = new Object();//there are better ways to do this
+//
+// person["firstName"] = "Sam"; //adding a property via the computed member access operator -> []
+// person["lastName"] = "Conrad";
+//
+// var firstNameProperty = "firstName";
+// console.log(person);//{firstName: "Sam"
+//                     //lastName: "Conrad"}
+// console.log(person[firstNameProperty]);//Sam
+//
+// //dot operator -> more common operator for accessing properties and methods
+// //Preferred approach is to use the dot operator (ALWAYS USE THE DOT OPERATOR)
+// console.log(person.firstName);//Sam
+// console.log(person.lastName); //Conrad
+//
+// //object sitting inside another object
+// person.address = new Object();//not the preferred way to create an object
+// person.address.street = "111 Main St";
+// person.address.city = "New York";
+// person.address.state = "NY";
+//
+// console.log(person.address.street); //111 Main St
+// console.log(person.address.city);//New York
+// console.log(person["address"]["state"]); //NY
 
 
 //OBJECTS AND OBJECT LITERALS
 
 //CODE:
 
-var person1 = {};
-console.log(person1);//empty object
-
-var john = {
-    firstName: 'John',
-    lastName: 'Doe',
-    address: {
-        street: '111 Main St.',
-        city: 'New York',
-        state: 'NY'
-    }
-};//object literal
-console.log(john);
-
-function greet1(person) {
-    console.log('Hi, ' + person.firstName);
-}
-
-greet1(john);//Hi, John
-
-
-//valid object literal syntax to create an object on the fly, when the function is called
-greet1({
-    firstName: 'Jane',
-    lastName: 'Doe'
-});// Hi, Jane
-
-john.address2 = {
-    street: '222 Second St.'
-}
+// var person1 = {};
+// console.log(person1);//empty object
+//
+// var john = {
+//     firstName: 'John',
+//     lastName: 'Doe',
+//     address: {
+//         street: '111 Main St.',
+//         city: 'New York',
+//         state: 'NY'
+//     }
+// };//object literal
+// console.log(john);
+//
+// function greet1(person) {
+//     console.log('Hi, ' + person.firstName);
+// }
+//
+// greet1(john);//Hi, John
+//
+//
+// //valid object literal syntax to create an object on the fly, when the function is called
+// greet1({
+//     firstName: 'Jane',
+//     lastName: 'Doe'
+// });// Hi, Jane
+//
+// john.address2 = {
+//     street: '222 Second St.'
+// }
 
 //Object literal syntax can make for clean/easy to read code
 
@@ -365,53 +365,53 @@ john.address2 = {
 
 //CODE:
 
-var greet = 'Hello!';
-var greet = 'Hola!';
-
-console.log(greet);//Hola!
-
-//object literal syntax
-var english = {};
-var spanish = {};
-
-english.greet = 'Hello!';
-spanish.greet = 'Hola!';
-
-console.log(english);//{greet: "Hello!"}
-console.log(spanish);//{greet: "Hola!"}
+// var greet = 'Hello!';
+// var greet = 'Hola!';
+//
+// console.log(greet);//Hola!
+//
+// //object literal syntax
+// var english = {};
+// var spanish = {};
+//
+// english.greet = 'Hello!';
+// spanish.greet = 'Hola!';
+//
+// console.log(english);//{greet: "Hello!"}
+// console.log(spanish);//{greet: "Hola!"}
 
 //cannot do this
 // english.greetings.greet = 'Hello!';//english.greetings is undefined
 //returns undefined.greet
 
-//instead do this
-english.greetings = {};
-
-//or initialize like this:
-var english = {
-    greetings: {
-        basic: 'Hello!'
-    }
-};
-
-english.greetings.greet = 'Hello!';
+// //instead do this
+// english.greetings = {};
+//
+// //or initialize like this:
+// var english = {
+//     greetings: {
+//         basic: 'Hello!'
+//     }
+// };
+//
+// english.greetings.greet = 'Hello!';
 
 
 //JSON -> JavaScript Object Notation
 
 //CODE:
 
-var objectLiteral = {
-    firstName: 'Sam',
-    isAProgrammer: true
-}
-
-//for any object you can do JSON.stringify to convert the object to a JSON string
-console.log(JSON.stringify(objectLiteral));//{"firstName":"Sam","isAProgrammer":true}
-
-var jsonValue = JSON.parse('{ "firstName":"Sam", "isAProgrammer":true}')
-
-console.log(jsonValue);//{firstName: "Sam", isAProgrammer: true}
+// var objectLiteral = {
+//     firstName: 'Sam',
+//     isAProgrammer: true
+// }
+//
+// //for any object you can do JSON.stringify to convert the object to a JSON string
+// console.log(JSON.stringify(objectLiteral));//{"firstName":"Sam","isAProgrammer":true}
+//
+// var jsonValue = JSON.parse('{ "firstName":"Sam", "isAProgrammer":true}')
+//
+// console.log(jsonValue);//{firstName: "Sam", isAProgrammer: true}
 
 
 //JSON syntax
@@ -420,3 +420,38 @@ console.log(jsonValue);//{firstName: "Sam", isAProgrammer: true}
 //     "firstName": "Mary",
 //     "isAProgrammer": true
 // }
+
+
+//FUNCTIONS ARE OBJECTS
+
+//In JS, functions are object
+//First class functions: everything you can do with other types you can do with functions. Assign them to variables, pass them around, create them on the fly.
+
+//What does the function object look like?
+//Resides in memory. A function is a special type of object. You CAN attach primitives, objects, and functions to functions.
+//Two hidden properties:
+//1. Name 
+//2. Code
+
+
+//CODE:
+
+//Think of a function as an object whose code just happens to be one of the properties of that object.
+function greet() {
+    console.log('hi');
+}
+
+//adding a property to a function
+greet.language = 'english';
+
+//not helpful
+console.log(greet);
+//ƒ greet() {
+//     console.log('hi');
+// }
+
+
+//helpful
+console.log(greet.language);//english
+
+
