@@ -158,7 +158,7 @@ function getPeron() {
     }
 }
 
-console.log(getPeron());//undefined
+console.log(getPeron());//{firstName: "John"}
 ```
 
 #### [Back To Top](#javascript-understanding-the-weird-parts)
