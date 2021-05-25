@@ -107,7 +107,7 @@ console.log(greet.language);//english
 
 #### Function Statements and Function Expressions
 
-Statement: Just do work.
+Statement: Just does work.
 
 Expression: A unit of code that results in a value. It doesn't have to save to a variable. Function expressions are NOT hoisted.
 
