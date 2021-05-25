@@ -700,3 +700,31 @@ greetings();
 greetings('John');
 greetings('John', 'Doe');
 greetings('John', 'Doe', 'es');
+
+
+//FUNCTION OVERLOADING
+
+//CODE:
+
+function greet1(firstName, lastName, language) {
+    language = language || 'en';
+
+    if(language === 'en') {
+        console.log('Hello ' + firstName + ' ' + lastName);
+    }
+
+    if(language === 'es') {
+        console.log('Hola ' + firstName + ' ' + lastName);
+    }
+}
+
+function greetEnglish(firstName, lastName) {
+    greet1(firstName, lastName, 'en');
+}
+
+function greetSpanish(firstName, lastName) {
+    greet1(firstName, lastName, 'es');
+}
+
+greetEnglish('John', 'Doe');
+greetSpanish('John', 'Doe');
