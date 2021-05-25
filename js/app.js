@@ -460,24 +460,24 @@
 
 //CODE:
 
-//Function Statement: B/c it doesn't result in a value
-greet();//hi
-
-function greet() {
-    console.log('hi');
-}
-
-//don't try this BEFORE the var anonymousGreet b/c function expressions ARE NOT hoisted. Your var anonymousGreet will be set to undefined in memory when you call anonymousGreet() and you will get an error
+// //Function Statement: B/c it doesn't result in a value
+// greet();//hi
+//
+// function greet() {
+//     console.log('hi');
+// }
+//
+// //don't try this BEFORE the var anonymousGreet b/c function expressions ARE NOT hoisted. Your var anonymousGreet will be set to undefined in memory when you call anonymousGreet() and you will get an error
+// // anonymousGreet();
+//
+// //Function Expression
+// var anonymousGreet = function() {
+//     console.log('hi');
+// }
+//
+//
+// //instead do this
 // anonymousGreet();
-
-//Function Expression
-var anonymousGreet = function() {
-    console.log('hi');
-}
-
-
-//instead do this
-anonymousGreet();
 
 // function log(a) {
 //     console.log(a);
@@ -501,60 +501,110 @@ anonymousGreet();
 // //}
 
 
-//how to invoke/run a passed function
-function log(a) {
-    a();
-}
-
-//passing a function to a function
-log(function() {
-    console.log('hi');
-});
+// //how to invoke/run a passed function
+// function log(a) {
+//     a();
+// }
+//
+// //passing a function to a function
+// log(function() {
+//     console.log('hi');
+// });
 
 
 //BY VALUE (primitives)
 
 //CODE:
 
-var a = 3;
-var b;
+// var a = 3;
+// var b;
+//
+// b = a; //3
+// //var b in memory has a new spot of memory as a copy of a
+//
+// b = a;
+// a = 2;//when changing a, has no value on b b/c b is just a copy of the previous a value
+// console.log(a);//2
+// console.log(b);//3
+//
+// //by reference (all objects (including functions))
+// var c = { greeting: 'hi' };
+// var d;
+//
+// d = c;
+// c.greeting = 'hello'; //mutate
+// //mutate: to change something.
+// // "immutable" means it can't be changed
+//
+// console.log(c);//{ greeting: 'hello' }
+// console.log(d);//{ greeting: 'hello' }
+//
+// //The output is { greeting: 'hello' } b/c they are pointing to the same place in memory (set equal to each other by reference)
+//
+//
+// //by reference (even as parameters)
+// function changeGreeting(obj) {
+//     obj.greeting = 'hola'; //mutate
+// }
+//
+// changeGreeting(d);
+//
+// console.log(c);// { greeting: 'hola' }
+// console.log(d);// { greeting: 'hola' }
+//
+// //equals operator sets up new memory space (new address)
+// c = { greeting: 'howdy' };
+// //that's why d is not effected by the change above
+// console.log(c); //{ greeting: 'howdy' }
+// console.log(d);//{ greeting: 'hola' };
 
-b = a; //3
-//var b in memory has a new spot of memory as a copy of a
 
-b = a;
-a = 2;//when changing a, has no value on b b/c b is just a copy of the previous a value
-console.log(a);//2
-console.log(b);//3
+//OBJECTS, FUNCTIONS, AND this
 
-//by reference (all objects (including functions))
-var c = { greeting: 'hi' };
-var d;
+//CODE:
 
-d = c;
-c.greeting = 'hello'; //mutate
-//mutate: to change something.
-// "immutable" means it can't be changed
+//'this' keyword
 
-console.log(c);//{ greeting: 'hello' }
-console.log(d);//{ greeting: 'hello' }
+// console.log(this);//window object
 
-//The output is { greeting: 'hello' } b/c they are pointing to the same place in memory (set equal to each other by reference)
-
-
-//by reference (even as parameters)
-function changeGreeting(obj) {
-    obj.greeting = 'hola'; //mutate
+function a() {
+    console.log(this);
+    this.newVariable = 'hello';//attaching this variable to the global object
 }
 
-changeGreeting(d);
+var b = function () {
+    console.log(this);
+}
 
-console.log(c);// { greeting: 'hola' }
-console.log(d);// { greeting: 'hola' }
+//invoking a
+a();//window object
+//'this' points to the global object. That's why you get the window object
+console.log(newVariable);//hello
+b();//window object
+
+//Whenever you create a function (function expression, function statement, creating a function at this level in the code) then 'this' will point to the global object (the window object in this case)
 
 
-//equals operator sets up new memory space (new address)
-c = { greeting: 'howdy' };
-//that's why d is not effected by the change above
-console.log(c); //{ greeting: 'howdy' }
-console.log(d);//{ greeting: 'hola' };
+//OBJECT METHOD
+
+var c = {
+    name: 'The c object',
+    //creating a method (function)
+    log: function () {
+        var self = this;
+
+        self.name = 'Updated c object'
+        console.log(self);//{name: "Updated c object", log: ƒ}
+
+        var setName = function (newName) {
+            self.name = newName;
+        }
+
+        setName('Updated again! The c object');
+        console.log(self);//{name: "Updated again! The c object", log: ƒ}
+    }
+}
+
+c.log();
+////{name: "Updated c object", log: ƒ}
+//{name: "Updated again! The c object", log: ƒ}
