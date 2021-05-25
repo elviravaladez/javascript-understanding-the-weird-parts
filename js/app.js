@@ -567,164 +567,188 @@
 
 // console.log(this);//window object
 
-function a() {
-    console.log(this);
-    this.newVariable = 'hello';//attaching this variable to the global object
-}
+// function a() {
+//     console.log(this);
+//     this.newVariable = 'hello';//attaching this variable to the global object
+// }
+//
+// var b = function () {
+//     console.log(this);
+// }
+//
+// //invoking a
+// a();//window object
+// //'this' points to the global object. That's why you get the window object
+// console.log(newVariable);//hello
+// b();//window object
+//
+// //Whenever you create a function (function expression, function statement, creating a function at this level in the code) then 'this' will point to the global object (the window object in this case)
+//
+//
+// //OBJECT METHOD
+//
+// var c = {
+//     name: 'The c object',
+//     //creating a method (function)
+//     log: function () {
+//         var self = this;
+//
+//         self.name = 'Updated c object'
+//         console.log(self);//{name: "Updated c object", log: ƒ}
+//
+//         var setName = function (newName) {
+//             self.name = newName;
+//         }
+//
+//         setName('Updated again! The c object');
+//         console.log(self);//{name: "Updated again! The c object", log: ƒ}
+//     }
+// }
+//
+// c.log();
+// ////{name: "Updated c object", log: ƒ}
+// //{name: "Updated again! The c object", log: ƒ}
+//
+//
+// //ARRAYS - Collections of anything
+//
+// //CODE:
+//
+// // var arr = new Array();
+// //or
+// var arr = [
+//     1,
+//     false,
+//     {
+//         name: 'Jane',
+//         address: '111 Main St.'
+//     },
+//     function (name) {
+//         var greeting = 'Hello ';
+//         console.log(greeting + name);
+//     },
+//     "hello"
+// ];
+//
+// //JS arrays are diff. b/c
+// console.log(arr);//[1, false, {name: "Jane", address: "111 Main St."}, ƒ (name), "hello"]
+//
+// arr[3](arr[2].name);//Hello Jane
+//
+//
+// //'arguments' and SPREAD
+// //Arguments: the parameters you pass to a function
+// //JS gives you a keyword of the same name which contains them all
+//
+// //CODE:
+//
+// function greet(firstName, lastName, language) {
+//     console.log(firstName);
+//     console.log(lastName);
+//     console.log(language);
+//     console.log('--------------');
+// }
+//
+// greet();
+// //undefined
+// //undefined
+// //undefined
+// // --------------
+// //hoisting takes care of these unset parameters in the invoked greet()
+//
+// greet('John');
+// //John
+// // undefined
+// // undefined
+// // --------------
+//
+// greet('John', 'Doe');
+// //John
+// //Doe
+// // undefined
+// // --------------
+//
+// greet('John', 'Doe', 'es');
+// //John
+// //Doe
+// //es
+// // --------------
+//
+//
+// function greetings(firstName, lastName, language) {
+//
+//     language = language || 'en';//language will equal 'en' if undefined
+//
+//     if(arguments.length === 0) {
+//         console.log('Missing parameters!');
+//         console.log('--------------');
+//         return;
+//     }
+//
+//     console.log(firstName);
+//     console.log(lastName);
+//     console.log(language);
+//     console.log(arguments);
+//     console.log('arg 0: ' + arguments[0]);
+//     //keyword arguments outputs a list of all the values that you passed.
+//     // It is array-like. It acts and looks like an array, but it doesn't have all the features of an array
+//     console.log('--------------');
+// }
+//
+//
+// greetings();
+// greetings('John');
+// greetings('John', 'Doe');
+// greetings('John', 'Doe', 'es');
+//
+//
+// //FUNCTION OVERLOADING
+//
+// //CODE:
+//
+// function greet1(firstName, lastName, language) {
+//     language = language || 'en';
+//
+//     if(language === 'en') {
+//         console.log('Hello ' + firstName + ' ' + lastName);
+//     }
+//
+//     if(language === 'es') {
+//         console.log('Hola ' + firstName + ' ' + lastName);
+//     }
+// }
+//
+// function greetEnglish(firstName, lastName) {
+//     greet1(firstName, lastName, 'en');
+// }
+//
+// function greetSpanish(firstName, lastName) {
+//     greet1(firstName, lastName, 'es');
+// }
+//
+// greetEnglish('John', 'Doe');
+// greetSpanish('John', 'Doe');
 
-var b = function () {
-    console.log(this);
-}
-
-//invoking a
-a();//window object
-//'this' points to the global object. That's why you get the window object
-console.log(newVariable);//hello
-b();//window object
-
-//Whenever you create a function (function expression, function statement, creating a function at this level in the code) then 'this' will point to the global object (the window object in this case)
 
 
-//OBJECT METHOD
+//WHITESPACE
+var
+    // first name of the person
+    firstName,
 
-var c = {
-    name: 'The c object',
-    //creating a method (function)
-    log: function () {
-        var self = this;
+    // last name of the person
+    lastName,
 
-        self.name = 'Updated c object'
-        console.log(self);//{name: "Updated c object", log: ƒ}
+    //the language
+    //can be 'en' or 'es'
+    language;
 
-        var setName = function (newName) {
-            self.name = newName;
-        }
+var person = {
+  //the first name
+  firstName: 'John',
+  //the last name
+  //(always required)
+  lastName: 'Doe'
+};
 
-        setName('Updated again! The c object');
-        console.log(self);//{name: "Updated again! The c object", log: ƒ}
-    }
-}
-
-c.log();
-////{name: "Updated c object", log: ƒ}
-//{name: "Updated again! The c object", log: ƒ}
-
-
-//ARRAYS - Collections of anything
-
-//CODE:
-
-// var arr = new Array();
-//or
-var arr = [
-    1,
-    false,
-    {
-        name: 'Jane',
-        address: '111 Main St.'
-    },
-    function (name) {
-        var greeting = 'Hello ';
-        console.log(greeting + name);
-    },
-    "hello"
-];
-
-//JS arrays are diff. b/c
-console.log(arr);//[1, false, {name: "Jane", address: "111 Main St."}, ƒ (name), "hello"]
-
-arr[3](arr[2].name);//Hello Jane
-
-
-//'arguments' and SPREAD
-//Arguments: the parameters you pass to a function
-//JS gives you a keyword of the same name which contains them all
-
-//CODE:
-
-function greet(firstName, lastName, language) {
-    console.log(firstName);
-    console.log(lastName);
-    console.log(language);
-    console.log('--------------');
-}
-
-greet();
-//undefined
-//undefined
-//undefined
-// --------------
-//hoisting takes care of these unset parameters in the invoked greet()
-
-greet('John');
-//John
-// undefined
-// undefined
-// --------------
-
-greet('John', 'Doe');
-//John
-//Doe
-// undefined
-// --------------
-
-greet('John', 'Doe', 'es');
-//John
-//Doe
-//es
-// --------------
-
-
-function greetings(firstName, lastName, language) {
-
-    language = language || 'en';//language will equal 'en' if undefined
-
-    if(arguments.length === 0) {
-        console.log('Missing parameters!');
-        console.log('--------------');
-        return;
-    }
-
-    console.log(firstName);
-    console.log(lastName);
-    console.log(language);
-    console.log(arguments);
-    console.log('arg 0: ' + arguments[0]);
-    //keyword arguments outputs a list of all the values that you passed.
-    // It is array-like. It acts and looks like an array, but it doesn't have all the features of an array
-    console.log('--------------');
-}
-
-
-greetings();
-greetings('John');
-greetings('John', 'Doe');
-greetings('John', 'Doe', 'es');
-
-
-//FUNCTION OVERLOADING
-
-//CODE:
-
-function greet1(firstName, lastName, language) {
-    language = language || 'en';
-
-    if(language === 'en') {
-        console.log('Hello ' + firstName + ' ' + lastName);
-    }
-
-    if(language === 'es') {
-        console.log('Hola ' + firstName + ' ' + lastName);
-    }
-}
-
-function greetEnglish(firstName, lastName) {
-    greet1(firstName, lastName, 'en');
-}
-
-function greetSpanish(firstName, lastName) {
-    greet1(firstName, lastName, 'es');
-}
-
-greetEnglish('John', 'Doe');
-greetSpanish('John', 'Doe');
+console.log(person); //{firstName: "John", lastName: "Doe"}
