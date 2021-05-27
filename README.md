@@ -163,6 +163,7 @@ There are two valid ways to write an IIFE:
 ```js
 //Example One
 var firstName = 'Sam';
+
 (function(name) {
     
     var greeting = 'Hello';
@@ -174,6 +175,7 @@ var firstName = 'Sam';
 ```js
 //Example Two
 var firstName = 'Sam';
+
 (function(name) {
     
     var greeting = 'Hello';
