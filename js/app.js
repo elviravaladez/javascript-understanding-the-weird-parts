@@ -732,23 +732,107 @@
 
 
 //WHITESPACE
-var
-    // first name of the person
-    firstName,
 
-    // last name of the person
-    lastName,
+// //CODE:
+// var
+//     // first name of the person
+//     firstName,
+//
+//     // last name of the person
+//     lastName,
+//
+//     //the language
+//     //can be 'en' or 'es'
+//     language;
+//
+// var person = {
+//   //the first name
+//   firstName: 'John',
+//   //the last name
+//   //(always required)
+//   lastName: 'Doe'
+// };
+//
+// console.log(person); //{firstName: "John", lastName: "Doe"}
 
-    //the language
-    //can be 'en' or 'es'
-    language;
 
-var person = {
-  //the first name
-  firstName: 'John',
-  //the last name
-  //(always required)
-  lastName: 'Doe'
-};
+//IMMEDIATELY INVOKED FUNCTION EXPRESSIONS (IIFE)s
 
-console.log(person); //{firstName: "John", lastName: "Doe"}
+//CODE:
+
+// //function statement
+// function greet(name) {
+//     console.log('Hello ' + name);
+// }
+//
+// //invoke the function
+// greet('John'); //Hello John
+//
+// //using a function expression
+// var greetFunc = function () {
+//     console.log('Hello ' + name);
+// };
+//
+// greetFunc('John');//Hello John
+
+
+// var greeting = function(name) {
+//     console.log('Hello ' + name);
+// };
+
+
+// console.log(greeting);
+//f (name) {
+//     console.log('Hello ' + name);
+// }
+
+
+//invoke it with a parameter
+// console.log(greeting('John'));
+//Hello John
+//undefined
+
+//using an Immediately Invoked Function Expression (IIFE)
+// var greeting = function(name) {
+//     return 'Hello ' + name;
+// }('John');
+//
+// console.log(greeting);//Hello John
+//greeting contains a string now b/c i invoked the function
+
+//you will get an error if you try this:
+// console.log(greeting());//Uncaught TypeError: greeting is not a function
+
+
+//Valid JS expressions, even though we are not doing anything with them
+// 3;
+// "I am a string";
+
+// {
+//     name: 'John'
+// };
+
+// //This is a function statement
+// function(name) {
+//     return 'Hello ' + name;
+// }
+
+//There are a few ways to do make this a function expression:
+//The most accepted way to do this is to wrap the function in parenthesis
+var firstName = 'John';
+
+
+// IIFE (immediately invoked function expression)
+
+//you can invoke it inside the parenthesis
+(function(name) {
+    var greeting = 'Hello';
+    console.log(greeting + ' ' + name);
+}(firstName));// inside the parenthesis
+
+
+//another syntax: you can invoke it outside the parenthesis
+(function(name) {
+    var greeting = 'Hello';
+    console.log(greeting + ' ' + name);
+})(firstName);// outside the parenthesis

@@ -157,6 +157,31 @@ function getPeron() {
 console.log(getPeron());//{firstName: "John"}
 ```
 
+#### Immediately Invoked Function Expressions (IIFE)s
+
+There are two valid ways to write an IIFE:
+```js
+//Example One (invoked inside parenthesis):
+var firstName = 'Sam';
+(function(name) {
+    
+    var greeting = 'Hello';
+    console.log(greeting + ' ' + name);
+    
+}(firstName));
+```
+
+```js
+//Example Two (invoked outside parenthesis):
+var firstName = 'Sam';
+(function(name) {
+    
+    var greeting = 'Hello';
+    console.log(greeting + ' ' + name);
+    
+})(firstName);
+```
+
 #### [Back To Top](#javascript-understanding-the-weird-parts)
 
 ## Author
