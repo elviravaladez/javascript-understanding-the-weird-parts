@@ -161,7 +161,7 @@ console.log(getPeron());//{firstName: "John"}
 
 There are two valid ways to write an IIFE:
 ```js
-//Example One:
+//Example One
 var firstName = 'Sam';
 (function(name) {
     
@@ -172,7 +172,7 @@ var firstName = 'Sam';
 ```
 
 ```js
-//Example Two:
+//Example Two
 var firstName = 'Sam';
 (function(name) {
     
