@@ -819,20 +819,37 @@
 
 //There are a few ways to do make this a function expression:
 //The most accepted way to do this is to wrap the function in parenthesis
-var firstName = 'John';
+
+//CODE:
+// var firstName = 'John';
+//
+//
+// // IIFE (immediately invoked function expression)
+//
+// //you can invoke it inside the parenthesis
+// (function(name) {
+//     var greeting = 'Hello';
+//     console.log(greeting + ' ' + name);
+// }(firstName));// inside the parenthesis
+//
+//
+// //another syntax: you can invoke it outside the parenthesis
+// (function(name) {
+//     var greeting = 'Hello';
+//     console.log(greeting + ' ' + name);
+// })(firstName);// outside the parenthesis
 
 
-// IIFE (immediately invoked function expression)
+//IIFEs and SAFE CODE
 
-//you can invoke it inside the parenthesis
-(function(name) {
+//CODE:
+(function (global, name) {
     var greeting = 'Hello';
+    global.greeting = 'Hello'; //intentionally making the global 'greeting' variable equal to 'Hello'
     console.log(greeting + ' ' + name);
-}(firstName));// inside the parenthesis
 
+}(window, 'John')); //IIFE
 
-//another syntax: you can invoke it outside the parenthesis
-(function(name) {
-    var greeting = 'Hello';
-    console.log(greeting + ' ' + name);
-})(firstName);// outside the parenthesis
+console.log(greeting);//Hola
+//This outputs 'Hola' b/c greet.js is stacked on top of app.js in index.html
+//'Hola' is available via the Global Execution Context, whereas greeting 'Hello' is available in app.js via Execution Context(for the anonymous function)
