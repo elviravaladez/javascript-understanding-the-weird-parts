@@ -843,13 +843,70 @@
 //IIFEs and SAFE CODE
 
 //CODE:
-(function (global, name) {
-    var greeting = 'Hello';
-    global.greeting = 'Hello'; //intentionally making the global 'greeting' variable equal to 'Hello'
-    console.log(greeting + ' ' + name);
-
-}(window, 'John')); //IIFE
-
-console.log(greeting);//Hola
+// (function (global, name) {
+//     var greeting = 'Hello';
+//     global.greeting = 'Hello'; //intentionally making the global 'greeting' variable equal to 'Hello'
+//     console.log(greeting + ' ' + name);
+// }(window, 'John')); //IIFE
+//
+// console.log(greeting);//Hola
 //This outputs 'Hola' b/c greet.js is stacked on top of app.js in index.html
 //'Hola' is available via the Global Execution Context, whereas greeting 'Hello' is available in app.js via Execution Context(for the anonymous function)
+
+
+//UNDERSTANDING CLOSURES
+
+//CODE:
+function greet(whatToSay) {
+    return function(name) {
+        console.log(whatToSay + ' ' + name);
+    }
+}
+
+var sayHi = greet('Hi');//invokes greet()
+sayHi('Samantha');//This returns a function. We invoked the function by using ('Samantha')
+
+//How does the sayHi variable still know what to say?
+
+
+//closures example:
+function buildFunctions() {
+    var arr = [];
+
+    for(var i = 0; i < 3; i++) {
+        arr.push(
+            //function is being created here
+            function() {
+                console.log(i);//this is NOT being executed here
+            }
+        );
+    }
+    return arr;//3
+}
+
+var fs = buildFunctions();//this line executes buildFunctions()
+
+//function is being invoked here (down below)
+fs[0]();//3
+fs[1]();//3
+fs[2]();//3
+
+var arr = [];
+
+function buildFunctions2() {
+    let j = i;
+    for(var i = 0; i < 3; i++) {
+        arr.push(
+            function() {
+                console.log(j);
+            }
+        );
+    }
+    return arr;
+}
+
+var fs2 = buildFunctions2();//this line executes buildFunctions2()
+
+fs2[0]();
+fs2[1]();
+fs2[2]();
