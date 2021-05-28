@@ -894,19 +894,22 @@ fs[2]();//3
 var arr = [];
 
 function buildFunctions2() {
-    let j = i;
+    //execute a function on the fly using IIFE
+    //j will be stored as 0, 1, 2 in different execution contexts
     for(var i = 0; i < 3; i++) {
         arr.push(
-            function() {
-                console.log(j);
+            (function(j) {
+                return function() {
+                    console.log(j);
+                }
             }
-        );
+            )(i));
     }
     return arr;
 }
 
 var fs2 = buildFunctions2();//this line executes buildFunctions2()
 
-fs2[0]();
-fs2[1]();
-fs2[2]();
+fs2[0]();//0
+fs2[1]();//1
+fs2[2]();//2
