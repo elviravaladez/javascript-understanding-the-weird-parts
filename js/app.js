@@ -942,22 +942,54 @@
 
 //CLOSURES AND CALLBACKS
 
+// //CODE:
+// function sayHiLater() {
+//     var greeting = 'Hi!';
+//     //using closures and function expressions
+//     //passing function object and another parameter to set the time
+//     //Thanks to the closure it still has access to the console.log(greeting) action
+//     setTimeout(function () {//callback function
+//         console.log(greeting);
+//     }, 3000);
+// }
+//
+// sayHiLater();//Hi!
+//
+//
+// //jQuery uses function expressions and first-class functions!
+// // //CODE EXAMPLE:
+// // $("button").click()function () {
+// //
+// // });
+
+
+
+//CALL(), APPLY(), and BIND()
+
 //CODE:
-function sayHiLater() {
-    var greeting = 'Hi!';
-    //using closures and function expressions
-    //passing function object and another parameter to set the time
-    //Thanks to the closure it still has access to the console.log(greeting) action
-    setTimeout(function () {//callback function
-        console.log(greeting);
-    }, 3000);
+var person = {
+    firstName: 'John',
+    lastName: 'Doe',
+    getFullName: function() {
+        var fullName = this.firstName + ' ' + this.lastName;
+        return fullName;
+    }
 }
 
-sayHiLater();//Hi!
+var logName = function(lang1, lang2) {
+    console.log('Logged: ' + this.getFullName());
+}
+
+//using the function as an object and call a method of the object -> bind
+var logPersonName = logName.bind(person);
+//The bind() returns a copy of the logName(). Whenever it's run the JS engine sees that this is referring to person
+
+logPersonName();//Logged: John Doe
 
 
-//jQuery uses function expressions and first-class functions!
-// //CODE EXAMPLE:
-// $("button").click()function () {
-//
-// });
+//Can do this as well
+var logName = function(lang1, lang2) {
+    console.log('Logged: ' + this.getFullName());
+}.bind(person);
+
+logName();//Logged: John Doe
