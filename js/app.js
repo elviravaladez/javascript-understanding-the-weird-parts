@@ -856,60 +856,85 @@
 
 //UNDERSTANDING CLOSURES
 
+// //CODE:
+// function greet(whatToSay) {
+//     return function(name) {
+//         console.log(whatToSay + ' ' + name);
+//     }
+// }
+//
+// var sayHi = greet('Hi');//invokes greet()
+// sayHi('Samantha');//This returns a function. We invoked the function by using ('Samantha')
+//
+// //How does the sayHi variable still know what to say?
+//
+//
+// //closures example:
+// function buildFunctions() {
+//     var arr = [];
+//
+//     for(var i = 0; i < 3; i++) {
+//         arr.push(
+//             //function is being created here
+//             function() {
+//                 console.log(i);//this is NOT being executed here
+//             }
+//         );
+//     }
+//     return arr;//3
+// }
+//
+// var fs = buildFunctions();//this line executes buildFunctions()
+//
+// //function is being invoked here (down below)
+// fs[0]();//3
+// fs[1]();//3
+// fs[2]();//3
+//
+// var arr = [];
+//
+// function buildFunctions2() {
+//     //execute a function on the fly using IIFE
+//     //j will be stored as 0, 1, 2 in different execution contexts
+//     for(var i = 0; i < 3; i++) {
+//         arr.push(
+//             (function(j) {
+//                 return function() {
+//                     console.log(j);
+//                 }
+//             }
+//             )(i));
+//     }
+//     return arr;
+// }
+//
+// var fs2 = buildFunctions2();//this line executes buildFunctions2()
+//
+// fs2[0]();//0
+// fs2[1]();//1
+// fs2[2]();//2
+
+
+//FUNCTION FACTORIES
 //CODE:
-function greet(whatToSay) {
-    return function(name) {
-        console.log(whatToSay + ' ' + name);
+
+function makeGreeting(language) {
+    return function(firstName, lastName) {
+        if(language === 'en') {
+            console.log('Hello ' + firstName + ' ' + lastName);
+        }
+
+        if(language === 'es') {
+            console.log('Hola ' + firstName + ' ' + lastName);
+        }
     }
 }
 
-var sayHi = greet('Hi');//invokes greet()
-sayHi('Samantha');//This returns a function. We invoked the function by using ('Samantha')
+//These lines execute makeGreeting(), then they return a function(firstName, lastName)
+var greetEnglish = makeGreeting('en');//this is one execution context
+var greetSpanish = makeGreeting('es');//this is a NEW execution context
 
-//How does the sayHi variable still know what to say?
+//Everytime you call a function, you get a new execution context, with its own variable environment
 
-
-//closures example:
-function buildFunctions() {
-    var arr = [];
-
-    for(var i = 0; i < 3; i++) {
-        arr.push(
-            //function is being created here
-            function() {
-                console.log(i);//this is NOT being executed here
-            }
-        );
-    }
-    return arr;//3
-}
-
-var fs = buildFunctions();//this line executes buildFunctions()
-
-//function is being invoked here (down below)
-fs[0]();//3
-fs[1]();//3
-fs[2]();//3
-
-var arr = [];
-
-function buildFunctions2() {
-    //execute a function on the fly using IIFE
-    //j will be stored as 0, 1, 2 in different execution contexts
-    for(var i = 0; i < 3; i++) {
-        arr.push(
-            (function(j) {
-                return function() {
-                    console.log(j);
-                }
-            }
-            )(i));
-    }
-    return arr;
-}
-
-var fs2 = buildFunctions2();//this line executes buildFunctions2()
-
-fs2[0]();//0
-fs2[1]();//1
-fs2[2]();//2
+greetEnglish('John', 'Doe'); //Hello John Doe
+greetSpanish('John', 'Doe'); //Hola John Doe

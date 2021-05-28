@@ -184,6 +184,35 @@ var firstName = 'Sam';
 })(firstName);//invoked outside parenthesis
 ```
 
+#### Function Factories
+Everytime you call a function, it gets a new execution context, with its own variable environment.
+
+```js
+function makeGreeting(language) {
+    return function(firstName, lastName) {
+        if(language === 'en') {
+            console.log('Hello ' + firstName + ' ' + lastName);
+        }
+
+        if(language === 'es') {
+            console.log('Hola ' + firstName + ' ' + lastName);
+        }
+    }
+}
+
+//These lines execute makeGreeting(), 
+// then they return function(firstName, lastName)
+var greetEnglish = makeGreeting('en');//this is one execution context
+var greetSpanish = makeGreeting('es');//this is a NEW execution context
+
+//Everytime you call a function, it gets its own new execution context, 
+// with its own variable environment
+
+//This is why the output you get for the code below is as follows:
+greetEnglish('John', 'Doe'); //Hello John Doe
+greetSpanish('John', 'Doe'); //Hola John Doe
+```
+
 #### [Back To Top](#javascript-understanding-the-weird-parts)
 
 ## Author
