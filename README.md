@@ -236,7 +236,7 @@ tellMeWhenDone(function () {
 ```
 
 #### `call()`, `apply()`, and `bind()`
-Because JavaScript functions are a special type of object, all functions have access to special functions and methods. These methods include:
+Because JavaScript functions are a special type of object, all functions have access to special functions and methods. The methods include:
 - `call()`
 - `apply()`
 - `bind()`
