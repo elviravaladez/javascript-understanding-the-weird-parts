@@ -916,25 +916,48 @@
 
 
 //FUNCTION FACTORIES
+
+// //CODE:
+// function makeGreeting(language) {
+//     return function(firstName, lastName) {
+//         if(language === 'en') {
+//             console.log('Hello ' + firstName + ' ' + lastName);
+//         }
+//
+//         if(language === 'es') {
+//             console.log('Hola ' + firstName + ' ' + lastName);
+//         }
+//     }
+// }
+//
+// //These lines execute makeGreeting(), then they return a function(firstName, lastName)
+// var greetEnglish = makeGreeting('en');//this is one execution context
+// var greetSpanish = makeGreeting('es');//this is a NEW execution context
+//
+// //Everytime you call a function, you get a new execution context, with its own variable environment
+//
+// greetEnglish('John', 'Doe'); //Hello John Doe
+// greetSpanish('John', 'Doe'); //Hola John Doe
+
+
+//CLOSURES AND CALLBACKS
+
 //CODE:
-
-function makeGreeting(language) {
-    return function(firstName, lastName) {
-        if(language === 'en') {
-            console.log('Hello ' + firstName + ' ' + lastName);
-        }
-
-        if(language === 'es') {
-            console.log('Hola ' + firstName + ' ' + lastName);
-        }
-    }
+function sayHiLater() {
+    var greeting = 'Hi!';
+    //using closures and function expressions
+    //passing function object and another parameter to set the time
+    //Thanks to the closure it still has access to the console.log(greeting) action
+    setTimeout(function () {//callback function
+        console.log(greeting);
+    }, 3000);
 }
 
-//These lines execute makeGreeting(), then they return a function(firstName, lastName)
-var greetEnglish = makeGreeting('en');//this is one execution context
-var greetSpanish = makeGreeting('es');//this is a NEW execution context
+sayHiLater();//Hi!
 
-//Everytime you call a function, you get a new execution context, with its own variable environment
 
-greetEnglish('John', 'Doe'); //Hello John Doe
-greetSpanish('John', 'Doe'); //Hola John Doe
+//jQuery uses function expressions and first-class functions!
+// //CODE EXAMPLE:
+// $("button").click()function () {
+//
+// });
