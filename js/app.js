@@ -991,7 +991,6 @@ logPersonName('en');
 //Arguments: en undefined
 //----------------
 
-
 // //Can do this as well
 // var logName = function(lang1, lang2) {
 //     console.log('Logged: ' + this.getFullName());
