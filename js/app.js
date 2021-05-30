@@ -966,6 +966,41 @@
 
 //CALL(), APPLY(), and BIND()
 
+// //CODE:
+// var person = {
+//     firstName: 'John',
+//     lastName: 'Doe',
+//     getFullName: function() {
+//         var fullName = this.firstName + ' ' + this.lastName;
+//         return fullName;
+//     }
+// }
+//
+// var logName = function(lang1, lang2) {
+//     console.log('Logged: ' + this.getFullName());
+//     console.log('Arguments: ' + lang1 + ' ' + lang2);
+//     console.log('----------------');
+// }
+//
+// //using the function as an object and call a method of the object -> bind
+// var logPersonName = logName.bind(person);
+// //The bind() returns a copy of the logName(). Whenever it's run the JS engine sees that this is referring to person
+//
+// logPersonName('en');
+// //Logged: John Doe
+// //Arguments: en undefined
+// //----------------
+//
+// // //Can do this as well
+// // var logName = function(lang1, lang2) {
+// //     console.log('Logged: ' + this.getFullName());
+// // }.bind(person);
+// //
+// // logName();//Logged: John Doe
+//bind() creates a copy and lets us tell 'this' what it will represent
+
+
+//call()
 //CODE:
 var person = {
     firstName: 'John',
@@ -982,18 +1017,12 @@ var logName = function(lang1, lang2) {
     console.log('----------------');
 }
 
-//using the function as an object and call a method of the object -> bind
+
 var logPersonName = logName.bind(person);
-//The bind() returns a copy of the logName(). Whenever it's run the JS engine sees that this is referring to person
-
 logPersonName('en');
-//Logged: John Doe
-//Arguments: en undefined
-//----------------
 
-// //Can do this as well
-// var logName = function(lang1, lang2) {
-//     console.log('Logged: ' + this.getFullName());
-// }.bind(person);
-//
-// logName();//Logged: John Doe
+logName();//standard way of calling a function
+logName.call(person, 'en', 'es');//calling (executing) a function with call(). Doing this lets us control what 'this' will be
+//first parameter is what 'this' will be. The other parameters are the parameters needed for that specific function. In this case, lang1 and lang2.
+
+logName.apply();

@@ -241,7 +241,7 @@ Because JavaScript functions are a special type of object, all functions have ac
 - `apply()`
 - `bind()`
 
-`bind()` creates a copy of the function and allows us to tell `this` what it represents
+The `bind()` creates a copy of the function and allows us to tell `this` what it represents.
 
 ```js
 var person = {
@@ -269,6 +269,15 @@ logPersonName('en');
 //Arguments: en undefined
 //----------------
 ```
+
+The `call()` allows us to control what `this` will be. The  first parameter with the `call()` represents the value to use as `this` when calling the function. The following parameters are the arguments for the function.
+
+In the example below, the `call()` is used to call (execute) the `logName()` function. Doing this allows us to control the value of `this`. The first parameter is what `this` will be. The following parameters are the arguments needed for the `logName()` function. In this example, `'en'` and `'es'` represent `lang1` and `lang2`.
+
+```js
+logName.call(person, 'en', 'es');
+```
+
 
 #### [Back To Top](#javascript-understanding-the-weird-parts)
 
