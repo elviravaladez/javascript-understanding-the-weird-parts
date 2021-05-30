@@ -241,6 +241,8 @@ Because JavaScript functions are a special type of object, all functions have ac
 - `apply()`
 - `bind()`
 
+`bind()` creates a copy of the function and allows us to tell `this` what it represents
+
 ```js
 var person = {
     firstName: 'John',
