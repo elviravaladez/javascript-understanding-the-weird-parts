@@ -241,6 +241,35 @@ Because JavaScript functions are a special type of object, all functions have ac
 - `apply()`
 - `bind()`
 
+`bind()` creates a copy of the function and allows us to tell `this` what it represents
+
+```js
+var person = {
+    firstName: 'John',
+    lastName: 'Doe',
+    getFullName: function() {
+        var fullName = this.firstName + ' ' + this.lastName;
+        return fullName;
+    }
+}
+
+var logName = function(lang1, lang2) {
+    console.log('Logged: ' + this.getFullName());
+    console.log('Arguments: ' + lang1 + ' ' + lang2);
+    console.log('----------------');
+}
+
+//using the function as an object and call a method of the object -> bind
+var logPersonName = logName.bind(person);
+////The bind() returns a copy of the logName(). Whenever it's run the JS engine sees that this is referring to "person"
+
+logPersonName('en');
+//That is why the output of this is as follows:
+//Logged: John Doe
+//Arguments: en undefined
+//----------------
+```
+
 #### [Back To Top](#javascript-understanding-the-weird-parts)
 
 ## Author

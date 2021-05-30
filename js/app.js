@@ -978,18 +978,23 @@ var person = {
 
 var logName = function(lang1, lang2) {
     console.log('Logged: ' + this.getFullName());
+    console.log('Arguments: ' + lang1 + ' ' + lang2);
+    console.log('----------------');
 }
 
 //using the function as an object and call a method of the object -> bind
 var logPersonName = logName.bind(person);
 //The bind() returns a copy of the logName(). Whenever it's run the JS engine sees that this is referring to person
 
-logPersonName();//Logged: John Doe
+logPersonName('en');
+//Logged: John Doe
+//Arguments: en undefined
+//----------------
 
 
-//Can do this as well
-var logName = function(lang1, lang2) {
-    console.log('Logged: ' + this.getFullName());
-}.bind(person);
-
-logName();//Logged: John Doe
+// //Can do this as well
+// var logName = function(lang1, lang2) {
+//     console.log('Logged: ' + this.getFullName());
+// }.bind(person);
+//
+// logName();//Logged: John Doe
