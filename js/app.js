@@ -1021,8 +1021,41 @@ var logName = function(lang1, lang2) {
 var logPersonName = logName.bind(person);
 logPersonName('en');
 
-logName();//standard way of calling a function
+// logName();//standard way of calling a function
 logName.call(person, 'en', 'es');//calling (executing) a function with call(). Doing this lets us control what 'this' will be
 //first parameter is what 'this' will be. The other parameters are the parameters needed for that specific function. In this case, lang1 and lang2.
 
-logName.apply();
+// logName.apply();
+
+//Example of immediately invoking a function, while creating a function on the fly. Using apply()
+(function (lang1, lang2) {
+    console.log('Logged: ' + this.getFullName());
+    console.log('Arguments: ' + lang1 + ' ' + lang2);
+    console.log('----------------');
+}).apply(person, ['en', 'es']);
+// Logged: John Doe
+// Arguments: en es
+//----------------
+
+
+//function borrowing
+var person2 = {
+    firstName: 'Jane',
+    lastName: 'Doe'
+}
+
+//setting this to person2 in order to borrow the method from the 'person' object
+console.log(person.getFullName.apply(person2));
+
+
+//function currying: creating a copy of a function but with some preset parameters. Very useful in mathematical situations.
+//taking a function, creating a new function from it with some default parameters.
+function multiply(a, b) {
+    return a * b;
+}
+
+var multiplyByTwo = multiply.bind(this, 2);//2 now represents the first parameter "a" and will always be a 2 for the multiplyByTwo()
+console.log(multiplyByTwo(4));//4 represents b, therefore the output will be 8
+var multiplyByTwo = multiply.bind(this, 2, 2);//if i pass both parameters to the bind, both of the values passed 2 and 2 are the permanent values. Therefore, if you pass a 5, like below, you still get 4, b/c 2 * 2 is 4
+console.log(multiplyByTwo(5));//4
+

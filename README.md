@@ -238,10 +238,12 @@ tellMeWhenDone(function () {
 #### `call()`, `apply()`, and `bind()`
 Because JavaScript functions are a special type of object, all functions have access to special functions and methods. The methods include:
 - `call()`
-- `apply()`
+- `apply()`  
 - `bind()`
+  
 
-The `bind()` creates a copy of the function and allows us to tell `this` what it represents.
+#### bind()
+The `bind()`creates a copy of the function and allows us to tell `this` what it represents.
 
 ```js
 var person = {
@@ -269,7 +271,7 @@ logPersonName('en');
 //Arguments: en undefined
 //----------------
 ```
-
+#### call()
 The `call()` allows us to control what `this` will be. The  first parameter with the `call()` represents the value to use as `this` when calling the function. The following parameters are the arguments for the function.
 
 In the example below, the `call()` is used to call (execute) the `logName()` function. Doing this allows us to control the value of `this`. The first parameter is what `this` will be. The following parameters are the arguments needed for the `logName()` function. In this example, `'en'` and `'es'` represent `lang1` and `lang2`.
@@ -278,6 +280,61 @@ In the example below, the `call()` is used to call (execute) the `logName()` fun
 logName.call(person, 'en', 'es');
 ```
 
+#### apply()
+Like the `call()`, the `apply()` executes a function. The only difference is that `apply()` wants an array of parameters otherwise you will get an `Uncaught TypeError`. Using an array can be more useful under mathematical circumstances. Ex: when adding numbers.
+
+```js
+logName.apply(person, ['en', 'es']);
+```
+
+Example of immediately invoking a function, while creating a function on the fly. Using `apply()`:
+
+```js
+(function (lang1, lang2) {
+    console.log('Logged: ' + this.getFullName());
+    console.log('Arguments: ' + lang1 + ' ' + lang2);
+    console.log('----------------');
+}).apply(person, ['en', 'es']);
+``` 
+
+#### Function Borrowing
+Function borrowing allows us to borrow functions by using `call()` or `apply()` in order to access functions from other objects.
+```js
+var person = {
+    firstName: 'John',
+    lastName: 'Doe',
+    getFullName: function() {
+        var fullName = this.firstName + ' ' + this.lastName;
+        return fullName;
+    }
+}
+
+var person2 = {
+    firstName: 'Jane',
+    lastName: 'Doe'
+}
+
+//function borrowing
+person.getFullName.apply(person2);//allows us to access the method(function) within the "person" object
+```
+
+#### Function Currying
+Function Currying is creating a copy of a function but with some preset parameters. This is very useful in mathematical situations.
+
+```js
+function multiply(a, b) {
+    return a * b;
+}
+
+var multiplyByTwo = multiply.bind(this, 2); //2 now represents the first parameter "a" and will always be a 2 for the multiplyByTwo()
+multiplyByTwo(4);//4 represents b, therefore the output will be 8 b/c 4 * 2 = 8
+```
+
+If you pass both parameters to the `bind()`, both of the values passed become the permanent values. Therefore, in the example below, if you pass a `5`, you still get `4`, because `2 * 2` is `4`.
+```js
+var multiplyByTwo = multiply.bind(this, 2, 2);
+console.log(multiplyByTwo(5));//4
+```
 
 #### [Back To Top](#javascript-understanding-the-weird-parts)
 
