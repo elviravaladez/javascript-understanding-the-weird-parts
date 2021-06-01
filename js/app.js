@@ -1001,114 +1001,165 @@
 
 
 //call()
-//CODE:
+// //CODE:
+// var person = {
+//     firstName: 'John',
+//     lastName: 'Doe',
+//     getFullName: function() {
+//         var fullName = this.firstName + ' ' + this.lastName;
+//         return fullName;
+//     }
+// }
+//
+// var logName = function(lang1, lang2) {
+//     console.log('Logged: ' + this.getFullName());
+//     console.log('Arguments: ' + lang1 + ' ' + lang2);
+//     console.log('----------------');
+// }
+//
+//
+// var logPersonName = logName.bind(person);
+// logPersonName('en');
+//
+// // logName();//standard way of calling a function
+// logName.call(person, 'en', 'es');//calling (executing) a function with call(). Doing this lets us control what 'this' will be
+// //first parameter is what 'this' will be. The other parameters are the parameters needed for that specific function. In this case, lang1 and lang2.
+//
+// // logName.apply();
+//
+// //Example of immediately invoking a function, while creating a function on the fly. Using apply()
+// (function (lang1, lang2) {
+//     console.log('Logged: ' + this.getFullName());
+//     console.log('Arguments: ' + lang1 + ' ' + lang2);
+//     console.log('----------------');
+// }).apply(person, ['en', 'es']);
+// // Logged: John Doe
+// // Arguments: en es
+// //----------------
+//
+//
+// //function borrowing
+// var person2 = {
+//     firstName: 'Jane',
+//     lastName: 'Doe'
+// }
+//
+// //setting this to person2 in order to borrow the method from the 'person' object
+// console.log(person.getFullName.apply(person2));
+
+
+// //function currying: creating a copy of a function but with some preset parameters. Very useful in mathematical situations.
+// //taking a function, creating a new function from it with some default parameters.
+// function multiply(a, b) {
+//     return a * b;
+// }
+//
+// var multiplyByTwo = multiply.bind(this, 2);//2 now represents the first parameter "a" and will always be a 2 for the multiplyByTwo()
+// console.log(multiplyByTwo(4));//4 represents b, therefore the output will be 8
+// var multiplyByTwo = multiply.bind(this, 2, 2);//if i pass both parameters to the bind, both of the values passed 2 and 2 are the permanent values. Therefore, if you pass a 5, like below, you still get 4, b/c 2 * 2 is 4
+// console.log(multiplyByTwo(5));//4
+//
+// //FUNCTIONAL PROGRAMMING
+// function mapForEach(arr, fn) {
+//     var newArr = [];
+//
+//     for(var i = 0; i < arr.length; i++) {
+//         newArr.push(fn(arr[i]));
+//     }
+//
+//     return newArr;
+// }
+//
+// var arr1 = [1,2,3];
+//
+// console.log(arr1); //[1, 2, 3]
+//
+// var arr2 = mapForEach(arr1, function (item) {
+//     return item * 2;
+// });
+//
+// console.log(arr2); //[2, 4, 6]
+//
+// var arr3 = mapForEach(arr1, function (item) {
+//     return item > 2;
+// });
+//
+// console.log(arr3); //[false, false, true]
+//
+// //check and see if this item is past a certain limit
+// //created a function using function expression that accepted a "limiter"
+// // that I'm checking against to see if individual array "item"s are greater than the "limiter"
+// //doing the work to check if the item is past the limit, returns a boolean
+// var checkPastLimit = function (limiter, item) {
+//     return item > limiter;
+// }
+//
+// //call mapForEach, pass the arr that it loops over
+// //pass the "checkPastLimit function and make a copy of it using bind()
+// //put the word "this" although it doeesn't matter in this situation b/c we're not using
+// //"this" inside the function
+// //set first parameter to 1, so that when mapForEach() calls the fn(arr[i]) and reaches that array item  that has been passsed
+// //in the checkPastLimit, it will run it through the for loop to result in the appropriate responses
+// var arr4 = mapForEach(arr1, checkPastLimit.bind(this, 1));
+// console.log(arr4);//[false, true, true]
+//
+// //Creating a function where you only pass the "limiter" and it gives back a function like "checkPastLimit.bind(this, 1));" without having to use bind() outside of the variable
+// var checkPastLimitSimplified = function(limiter) {
+//     return function (limiter, item) {
+//         return item > limiter;
+//     }.bind(this, limiter);//using .bind() to preset the "limiter"
+// };
+//
+// var arr5 = mapForEach(arr1, checkPastLimitSimplified(2));
+// console.log(arr5);//[false, false, true]
+
+
+//Object-Oriented JavaScript and Prototypal Inheritance
+//Inheritance (in JS): One object gets access to the properties and methods of another object
+
+//Classical vs prototypal inheritance
+//Classical Inheritance: Verbose (Java, C#)
+//ex: friend, protected, private, interface
+
+//Prototypal Inheritance: Simple (JS)
+//flexible, extensible, easy to understand
+
+
+//Understanding the Prototype
+//Prototype:
+//obj (has prop1). Access it with obj.prop1
+//All objects have a proto {} property
+//It's an object that stands on its own. "proto" is the prototype
+//Has it's own properties -> prop 2. obj.prop2
+//the prototype can point to its own prototypes and so on and so forth
+//prototype chain: where we have access to a property or method
+// amongst a sequence of objects that are connected via the prototype property
+//(it's hidden from you in a way--> you don't have to say obj.proto.proto.prop2, you just say obj. prop2
+
+//If you have another object (obj2) it can point to the same object as it's prototype
+//Objects can share all the same prototypes if you want them to
+
 var person = {
-    firstName: 'John',
-    lastName: 'Doe',
+    firstName: 'Default',
+    lastName: 'Default',
     getFullName: function() {
-        var fullName = this.firstName + ' ' + this.lastName;
-        return fullName;
+        return this.firstName + ' ' + this.lastName;
     }
 }
 
-var logName = function(lang1, lang2) {
-    console.log('Logged: ' + this.getFullName());
-    console.log('Arguments: ' + lang1 + ' ' + lang2);
-    console.log('----------------');
-}
-
-
-var logPersonName = logName.bind(person);
-logPersonName('en');
-
-// logName();//standard way of calling a function
-logName.call(person, 'en', 'es');//calling (executing) a function with call(). Doing this lets us control what 'this' will be
-//first parameter is what 'this' will be. The other parameters are the parameters needed for that specific function. In this case, lang1 and lang2.
-
-// logName.apply();
-
-//Example of immediately invoking a function, while creating a function on the fly. Using apply()
-(function (lang1, lang2) {
-    console.log('Logged: ' + this.getFullName());
-    console.log('Arguments: ' + lang1 + ' ' + lang2);
-    console.log('----------------');
-}).apply(person, ['en', 'es']);
-// Logged: John Doe
-// Arguments: en es
-//----------------
-
-
-//function borrowing
-var person2 = {
-    firstName: 'Jane',
+var john = {
+    firstName: 'John',
     lastName: 'Doe'
 }
 
-//setting this to person2 in order to borrow the method from the 'person' object
-console.log(person.getFullName.apply(person2));
+// //Don't do this EVER! For demo purposes only!
+// john._proto_ = person; //setting prototype of john object to person object. John now inherits from person
+// console.log(john.getFullName()); //Uncaught TypeError
+// console.log(john.firstName);
 
-
-//function currying: creating a copy of a function but with some preset parameters. Very useful in mathematical situations.
-//taking a function, creating a new function from it with some default parameters.
-function multiply(a, b) {
-    return a * b;
+var jane = {
+    firstName: 'Jane'
 }
-
-var multiplyByTwo = multiply.bind(this, 2);//2 now represents the first parameter "a" and will always be a 2 for the multiplyByTwo()
-console.log(multiplyByTwo(4));//4 represents b, therefore the output will be 8
-var multiplyByTwo = multiply.bind(this, 2, 2);//if i pass both parameters to the bind, both of the values passed 2 and 2 are the permanent values. Therefore, if you pass a 5, like below, you still get 4, b/c 2 * 2 is 4
-console.log(multiplyByTwo(5));//4
-
-//FUNCTIONAL PROGRAMMING
-function mapForEach(arr, fn) {
-    var newArr = [];
-
-    for(var i = 0; i < arr.length; i++) {
-        newArr.push(fn(arr[i]));
-    }
-
-    return newArr;
-}
-
-var arr1 = [1,2,3];
-
-console.log(arr1); //[1, 2, 3]
-
-var arr2 = mapForEach(arr1, function (item) {
-    return item * 2;
-});
-
-console.log(arr2); //[2, 4, 6]
-
-var arr3 = mapForEach(arr1, function (item) {
-    return item > 2;
-});
-
-console.log(arr3); //[false, false, true]
-
-//check and see if this item is past a certain limit
-//created a function using function expression that accepted a "limiter"
-// that I'm checking against to see if individual array "item"s are greater than the "limiter"
-//doing the work to check if the item is past the limit, returns a boolean
-var checkPastLimit = function (limiter, item) {
-    return item > limiter;
-}
-
-//call mapForEach, pass the arr that it loops over
-//pass the "checkPastLimit function and make a copy of it using bind()
-//put the word "this" although it doeesn't matter in this situation b/c we're not using
-//"this" inside the function
-//set first parameter to 1, so that when mapForEach() calls the fn(arr[i]) and reaches that array item  that has been passsed
-//in the checkPastLimit, it will run it through the for loop to result in the appropriate responses
-var arr4 = mapForEach(arr1, checkPastLimit.bind(this, 1));
-console.log(arr4);//[false, true, true]
-
-//Creating a function where you only pass the "limiter" and it gives back a function like "checkPastLimit.bind(this, 1));" without having to use bind() outside of the variable
-var checkPastLimitSimplified = function(limiter) {
-    return function (limiter, item) {
-        return item > limiter;
-    }.bind(this, limiter);//using .bind() to preset the "limiter"
-};
-
-var arr5 = mapForEach(arr1, checkPastLimitSimplified(2));
-console.log(arr5);//[false, false, true]
+// //Don't do this EVER! For demo purposes only!
+// jane._proto_ = person;
+// console.log(jane.getFullName());//Uncaught TypeError
