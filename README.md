@@ -336,6 +336,9 @@ var multiplyByTwo = multiply.bind(this, 2, 2);
 console.log(multiplyByTwo(5));//4
 ```
 
+#### Reflection
+Reflection is when an object can look at itself, listing and changing its properties and methods.
+
 #### [Back To Top](#javascript-understanding-the-weird-parts)
 
 ## Author

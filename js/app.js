@@ -1153,13 +1153,57 @@ var john = {
 }
 
 // //Don't do this EVER! For demo purposes only!
-// john._proto_ = person; //setting prototype of john object to person object. John now inherits from person
-// console.log(john.getFullName()); //Uncaught TypeError
-// console.log(john.firstName);
+john.__proto__ = person; //setting prototype of john object to person object. John now inherits from person
+console.log(john.getFullName());
+console.log(john.firstName);
+
+// var jane = {
+//     firstName: 'Jane'
+// }
+// //Don't do this EVER! For demo purposes only!
+// jane.__proto__ = person;
+// console.log(jane.getFullName());
+
+//EVERYTHING IS AN OBJECT (or a primitive) IN JS
+var a = {};
+var b = function(){ };
+var c = [];
+
+
+//REFLECTION AND EXTEND
+//Reflection: an object can look at itself, listing and changing its properties and methods.
+john.__proto__ = person;
+for(var prop in john) {
+    console.log(prop + ': ' + john[prop]);
+}
+//firstName: John
+//lastName: Doe
+//getFullName: function() {
+//         return this.firstName + ' ' + this.lastName;
+//     }
+
+for(var prop in john) {
+    if(john.hasOwnProperty(prop)) {
+        console.log(prop + ': ' + john[prop]);
+    }
+}
+//firstName: John
+//lastName: Doe
+
 
 var jane = {
-    firstName: 'Jane'
+    address: '111 Main St.',
+    getFormalFullName: function() {
+        return this.lastName + ', ' + this.firstName;
+    }
 }
-// //Don't do this EVER! For demo purposes only!
-// jane._proto_ = person;
-// console.log(jane.getFullName());//Uncaught TypeError
+
+var jim = {
+    getFirstName: function() {
+        return firstName;
+    }
+}
+
+_.extend(john, jane, jim);
+
+console.log(john);
