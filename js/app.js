@@ -1059,3 +1059,56 @@ console.log(multiplyByTwo(4));//4 represents b, therefore the output will be 8
 var multiplyByTwo = multiply.bind(this, 2, 2);//if i pass both parameters to the bind, both of the values passed 2 and 2 are the permanent values. Therefore, if you pass a 5, like below, you still get 4, b/c 2 * 2 is 4
 console.log(multiplyByTwo(5));//4
 
+//FUNCTIONAL PROGRAMMING
+function mapForEach(arr, fn) {
+    var newArr = [];
+
+    for(var i = 0; i < arr.length; i++) {
+        newArr.push(fn(arr[i]));
+    }
+
+    return newArr;
+}
+
+var arr1 = [1,2,3];
+
+console.log(arr1); //[1, 2, 3]
+
+var arr2 = mapForEach(arr1, function (item) {
+    return item * 2;
+});
+
+console.log(arr2); //[2, 4, 6]
+
+var arr3 = mapForEach(arr1, function (item) {
+    return item > 2;
+});
+
+console.log(arr3); //[false, false, true]
+
+//check and see if this item is past a certain limit
+//created a function using function expression that accepted a "limiter"
+// that I'm checking against to see if individual array "item"s are greater than the "limiter"
+//doing the work to check if the item is past the limit, returns a boolean
+var checkPastLimit = function (limiter, item) {
+    return item > limiter;
+}
+
+//call mapForEach, pass the arr that it loops over
+//pass the "checkPastLimit function and make a copy of it using bind()
+//put the word "this" although it doeesn't matter in this situation b/c we're not using
+//"this" inside the function
+//set first parameter to 1, so that when mapForEach() calls the fn(arr[i]) and reaches that array item  that has been passsed
+//in the checkPastLimit, it will run it through the for loop to result in the appropriate responses
+var arr4 = mapForEach(arr1, checkPastLimit.bind(this, 1));
+console.log(arr4);//[false, true, true]
+
+//Creating a function where you only pass the "limiter" and it gives back a function like "checkPastLimit.bind(this, 1));" without having to use bind() outside of the variable
+var checkPastLimitSimplified = function(limiter) {
+    return function (limiter, item) {
+        return item > limiter;
+    }.bind(this, limiter);//using .bind() to preset the "limiter"
+};
+
+var arr5 = mapForEach(arr1, checkPastLimitSimplified(2));
+console.log(arr5);//[false, false, true]
