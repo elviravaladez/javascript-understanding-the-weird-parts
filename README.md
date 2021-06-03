@@ -418,7 +418,8 @@ Number.prototype.isPositive = function() {
     return this > 0;
 }
 
-console.log(3.isPositive());// Uncaught SyntaxError: Invalid or unexpected token
+console.log(3.isPositive());
+// Uncaught SyntaxError: Invalid or unexpected token
 ```
 
 #### [Back To Top](#javascript-understanding-the-weird-parts)
