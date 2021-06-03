@@ -354,19 +354,19 @@ There are different ways to build objects. A few different ways include:
 - `new`
   - The `new` keyword is an operator. With `new`, an empty object is created then it invokes the function. It changes what the `this` variable points to. In this case, it will point to the new empty object. As long as the function used with the `new` operator does not return a value, the JS engine will return the object that was created by the `new` operator.
   ```js
-    function Person(firstName, lastName) {
-        console.log(this);//empty object
-        this.firstName = firstName;
-        this.lastName = lastName;
-        console.log('This function is invoked.');
-    }
+  function Person(firstName, lastName) {
+      console.log(this);//empty object
+      this.firstName = firstName;
+      this.lastName = lastName;
+      console.log('This function is invoked.');
+  }
   
-    var john = new Person('John', 'Doe');
+  var john = new Person('John', 'Doe');
   
-    console.log(john);
-    //Person{}
-    //This function is invoked.
-    //Person{firstName: "John", lastName: "Doe"}
+  console.log(john);
+  //Person{}
+  //This function is invoked.
+  //Person{firstName: "John", lastName: "Doe"}
   ```
 
 #### Function Constructors and `.prototype`
@@ -376,6 +376,27 @@ All functions get the `.prototype` property. Anytime you create a function objec
 - Prototype
     - The prototype property is used ONLY by the `new` operator
     - It's better to put your methods on the prototype, because they only need one copy to be used. When the object calls that method, the JavaScript engine will go down the prototype chain to find it. This saves memory space because there's only one prototype for all of these objects.
+
+#### The `new` keyword and Functions
+ALWAYS start a function constructor with a capital letter in order to identify functions that are missing the `new` keyword when programming. If you forget to put the `new` keyword, this function will STILL execute and because it doesn't return anything explicitly it returns `undefined`. This means your objects will be set to `undefined`. When you try to use any properties and methods on that object you will get an error.
+
+Example of NOT using the `new` keyword with a function constructor:
+```js
+function Person(firstName, lastName) {
+    this.firstName = firstName;
+    this.lastName = lastName;
+}
+
+var john = Person('John', 'Doe');//no use of the "new" keyword
+console.log(john);//undefined
+
+Person.prototype.getFormalFullName = function () {
+    return this.lastName + ', ' + this.firstName;
+}
+
+console.log(john.getFormalFullName());
+//Uncaught TypeError: Cannot read property 'getFormalFullName' of undefined
+```
 
 #### [Back To Top](#javascript-understanding-the-weird-parts)
 

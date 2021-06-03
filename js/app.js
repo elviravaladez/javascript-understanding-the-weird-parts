@@ -1215,39 +1215,67 @@
 
 //FUNCTION CONSTRUCTORS:
 //lets us construct an object via a function
+// function Person(firstName, lastName) {
+//     console.log(this);//Person {}
+//     this.firstName = firstName;
+//     this.lastName = lastName;
+//     console.log('This function is invoked.');
+// }
+//
+// //FUNCTION CONSTRUCTORS AND '.PROTOTYPE'
+// //When you use a function constructor, your prototype gets set automatically
+// //Anytime you create a function object it has certain properties: name, code and prototype
+// //when you use the "new" operator
+// //prototype is used only by the "new" operator
+//
+//
+// //the prototype property is where the prototype chain points for any objects created using that function. In this case the Person function
+// Person.prototype.getFullName = function () {
+//     return this.firstName + ' ' + this.lastName;
+// }
+//
+//
+// //create a new object using the "new" operator
+// var john = new Person('John', 'Doe');
+// //the "new" keyword you are creating an empty object
+// //it sets the prototype of the empty object to the prototype property of the function that you then call. In this case, Person('John', 'Doe')
+// console.log(john);//Person{firstName: "John", lastName: "Doe"}
+//
+// //What if you want to create more people with the same function?
+// var jane = new Person('Jane', 'Doe');
+// console.log(jane);
+//
+// Person.prototype.getFormalFullName = function () {
+//     return this.lastName + ', ' + this.firstName;
+// }
+//
+// console.log(john.getFormalFullName());//Doe, John
+
+//'new' and functions
 function Person(firstName, lastName) {
-    console.log(this);//Person {}
     this.firstName = firstName;
     this.lastName = lastName;
-    console.log('This function is invoked.');
 }
 
-//FUNCTION CONSTRUCTORS AND '.PROTOTYPE'
-//When you use a function constructor, your prototype gets set automatically
-//Anytime you create a function object it has certain properties: name, code and prototype
-//when you use the "new" operator
-//prototype is used only by the "new" operator
-
-
-//the prototype property is where the prototype chain points for any objects created using that function. In this case the Person function
 Person.prototype.getFullName = function () {
     return this.firstName + ' ' + this.lastName;
 }
 
+//if you forget to put the 'new' keyword, this function will STILL execute
+// and since it doesn't return anything explicitly (it returns undefined)
+// which means your objects will be set to "undefined"
+//when you try to use any properties and methods on that object you will get an error
+//EXAMPLE:
+// Uncaught TypeError: Cannot read property 'getFormalFullName' of undefined
 
-//create a new object using the "new" operator
-var john = new Person('John', 'Doe');
-//the "new" keyword you are creating an empty object
-//it sets the prototype of the empty object to the prototype property of the function that you then call. In this case, Person('John', 'Doe')
-console.log(john);//Person{firstName: "John", lastName: "Doe"}
-
-//What if you want to create more people with the same function?
-var jane = new Person('Jane', 'Doe');
-console.log(jane);
+//TO AVOID THIS, try using the following conventions:
+//start any function that is intended to be used as a function constructor with a capital letter (that way you are able to identify functions that are missing the "new" keyword
+// Ex: Person()
+var john = Person('John', 'Doe');
+console.log(john);
 
 Person.prototype.getFormalFullName = function () {
     return this.lastName + ', ' + this.firstName;
 }
 
 console.log(john.getFormalFullName());//Doe, John
-
