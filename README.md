@@ -339,6 +339,36 @@ console.log(multiplyByTwo(5));//4
 #### Reflection
 Reflection is when an object can look at itself, listing and changing its properties and methods.
 
+
+##### Building Objects
+There are different ways to build objects. A few different ways include:
+- Object Literal Syntax
+   ```js
+  var person = {
+  firstName: "John",
+  lastName: "Doe"
+  };
+  ```
+- Function Constructors
+  - A  normal function that is used to construct objects. The `this` variable points to a new empty object, and that object is returned from the function automatically.
+- `new`
+  - The `new` keyword is an operator. With `new`, an empty object is created then it invokes the function. It changes what the `this` variable points to. In this case, it will point to the new empty object. As long as the function used with the `new` operator does not return a value, the JS engine will return the object that was created by the `new` operator.
+  ```js
+    function Person(firstName, lastName) {
+        console.log(this);//empty object
+        this.firstName = firstName;
+        this.lastName = lastName;
+        console.log('This function is invoked.');
+    }
+  
+    var john = new Person('John', 'Doe');
+  
+    console.log(john);
+    //Person{}
+    //This function is invoked.
+    //Person{firstName: "John", lastName: "Doe"}
+  ```
+
 #### [Back To Top](#javascript-understanding-the-weird-parts)
 
 ## Author

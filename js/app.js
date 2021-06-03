@@ -1139,71 +1139,93 @@
 //If you have another object (obj2) it can point to the same object as it's prototype
 //Objects can share all the same prototypes if you want them to
 
-var person = {
-    firstName: 'Default',
-    lastName: 'Default',
-    getFullName: function() {
-        return this.firstName + ' ' + this.lastName;
-    }
-}
-
-var john = {
-    firstName: 'John',
-    lastName: 'Doe'
-}
-
-// //Don't do this EVER! For demo purposes only!
-john.__proto__ = person; //setting prototype of john object to person object. John now inherits from person
-console.log(john.getFullName());
-console.log(john.firstName);
-
-// var jane = {
-//     firstName: 'Jane'
-// }
-// //Don't do this EVER! For demo purposes only!
-// jane.__proto__ = person;
-// console.log(jane.getFullName());
-
-//EVERYTHING IS AN OBJECT (or a primitive) IN JS
-var a = {};
-var b = function(){ };
-var c = [];
-
-
-//REFLECTION AND EXTEND
-//Reflection: an object can look at itself, listing and changing its properties and methods.
-john.__proto__ = person;
-for(var prop in john) {
-    console.log(prop + ': ' + john[prop]);
-}
-//firstName: John
-//lastName: Doe
-//getFullName: function() {
+// var person = {
+//     firstName: 'Default',
+//     lastName: 'Default',
+//     getFullName: function() {
 //         return this.firstName + ' ' + this.lastName;
 //     }
+// }
+//
+// var john = {
+//     firstName: 'John',
+//     lastName: 'Doe'
+// }
+//
+// // //Don't do this EVER! For demo purposes only!
+// john.__proto__ = person; //setting prototype of john object to person object. John now inherits from person
+// console.log(john.getFullName());
+// console.log(john.firstName);
+//
+// // var jane = {
+// //     firstName: 'Jane'
+// // }
+// // //Don't do this EVER! For demo purposes only!
+// // jane.__proto__ = person;
+// // console.log(jane.getFullName());
+//
+// //EVERYTHING IS AN OBJECT (or a primitive) IN JS
+// var a = {};
+// var b = function(){ };
+// var c = [];
+//
+//
+// //REFLECTION AND EXTEND
+// //Reflection: an object can look at itself, listing and changing its properties and methods.
+// john.__proto__ = person;
+// for(var prop in john) {
+//     console.log(prop + ': ' + john[prop]);
+// }
+// //firstName: John
+// //lastName: Doe
+// //getFullName: function() {
+// //         return this.firstName + ' ' + this.lastName;
+// //     }
+//
+// for(var prop in john) {
+//     if(john.hasOwnProperty(prop)) {
+//         console.log(prop + ': ' + john[prop]);
+//     }
+// }
+// //firstName: John
+// //lastName: Doe
+//
+//
+// var jane = {
+//     address: '111 Main St.',
+//     getFormalFullName: function() {
+//         return this.lastName + ', ' + this.firstName;
+//     }
+// }
+//
+// var jim = {
+//     getFirstName: function() {
+//         return firstName;
+//     }
+// }
+//
+// _.extend(john, jane, jim);
+//
+// console.log(john);
 
-for(var prop in john) {
-    if(john.hasOwnProperty(prop)) {
-        console.log(prop + ': ' + john[prop]);
-    }
+
+//BUILDING OBJECTS
+//Diff Ways:
+//object literal syntax, function constructors, "new", and the history of JS
+
+//FUNCTION CONSTRUCTORS:
+//lets us construct an object via a function
+function Person(firstName, lastName) {
+    console.log(this);//Person {}
+    this.firstName = firstName;
+    this.lastName = lastName;
+    console.log('This function is invoked.');
 }
-//firstName: John
-//lastName: Doe
 
+//create a new object using the "new" operator
+var john = new Person('John', 'Doe');
+console.log(john);//Person{firstName: "John", lastName: "Doe"}
 
-var jane = {
-    address: '111 Main St.',
-    getFormalFullName: function() {
-        return this.lastName + ', ' + this.firstName;
-    }
-}
-
-var jim = {
-    getFirstName: function() {
-        return firstName;
-    }
-}
-
-_.extend(john, jane, jim);
-
-console.log(john);
+//What if you want to create more people with the same function?
+var jane = new Person('Jane', 'Doe');
+console.log(jane);
