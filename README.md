@@ -340,7 +340,7 @@ console.log(multiplyByTwo(5));//4
 Reflection is when an object can look at itself, listing and changing its properties and methods.
 
 
-##### Building Objects
+#### Building Objects
 There are different ways to build objects. A few different ways include:
 - Object Literal Syntax
    ```js
@@ -369,7 +369,7 @@ There are different ways to build objects. A few different ways include:
     //Person{firstName: "John", lastName: "Doe"}
   ```
 
-##### Function Constructors and `.prototype`
+#### Function Constructors and `.prototype`
 All functions get the `.prototype` property. Anytime you create a function object it has certain properties. These properties include:
 - Name 
 - Code
