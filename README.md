@@ -419,7 +419,6 @@ Number.prototype.isPositive = function() {
 }
 
 console.log(3.isPositive());// Uncaught SyntaxError: Invalid or unexpected token
-// This code does NOT work because JS does not automatically convert numbers to objects
 ```
 
 #### [Back To Top](#javascript-understanding-the-weird-parts)
