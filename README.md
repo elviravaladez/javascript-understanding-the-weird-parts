@@ -369,6 +369,14 @@ There are different ways to build objects. A few different ways include:
     //Person{firstName: "John", lastName: "Doe"}
   ```
 
+##### Function Constructors and `.prototype`
+All functions get the `.prototype` property. Anytime you create a function object it has certain properties. These properties include:
+- Name 
+- Code
+- Prototype
+    - The prototype property is used ONLY by the `new` operator
+    - It's better to put your methods on the prototype, because they only need one copy to be used. When the object calls that method, the JavaScript engine will go down the prototype chain to find it. This saves memory space because there's only one prototype for all of these objects.
+
 #### [Back To Top](#javascript-understanding-the-weird-parts)
 
 ## Author
