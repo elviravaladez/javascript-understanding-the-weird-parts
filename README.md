@@ -380,7 +380,7 @@ All functions get the `.prototype` property. Anytime you create a function objec
 #### The `new` keyword and Functions
 ALWAYS start a function constructor with a capital letter in order to identify functions that are missing the `new` keyword when programming. If you forget to put the `new` keyword, this function will STILL execute and because it doesn't return anything explicitly it returns `undefined`. This means your objects will be set to `undefined`. When you try to use any properties and methods on that object you will get an error.
 
-Example of NOT using the `new` keyword with a function constructor:
+❌ Don't do this (example of NOT using the `new` keyword with a function constructor):
 ```js
 function Person(firstName, lastName) {
     this.firstName = firstName;
