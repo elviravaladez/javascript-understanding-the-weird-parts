@@ -1331,3 +1331,10 @@ Number.prototype.isPositive = function() {
 //YOU SHOULD NOT BE USING BUILT-IN FUNCTION CONSTRUCTORS FOR PRIMITIVE TYPES UNLESS YOU HAVE TO
 
 
+//Built-In Function Constructors are dangerous for primitive types such as boolean, number, string, etc.
+//Ex:
+var a = 3;
+var b = new Number(3);
+a == b; //true
+a === b; //false (b/c they're not the same type)
+//you're not really creating primitives when you are using built-in function constructors

@@ -422,6 +422,17 @@ console.log(3.isPositive());
 // Uncaught SyntaxError: Invalid or unexpected token
 ```
 
+Built-In Function Constructors are DANGEROUS for primitive types such as boolean, number, string, etc.
+
+Here is an example of why:
+```js
+var a = 3;//number primitive
+var b = new Number(3);//object
+a == b; //true
+a === b; //false (b/c they're not of the same type)
+```
+In the example above, you're not really creating the number primitive when using the `new Number()` built-in function constructor. Because of this, when you are doing a strict comparison of `a` and `b` they are NOT equal. This is one reason why you should NOT use built-in function constructors.
+
 #### [Back To Top](#javascript-understanding-the-weird-parts)
 
 ## Author
