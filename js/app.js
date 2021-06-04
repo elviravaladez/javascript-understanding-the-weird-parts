@@ -1,25 +1,21 @@
-//ARRAYS AND FOR IN
-Array.prototype.myCustomFeature = 'cool!';
+//Object.create and Pure Prototypal Inheritance
 
-var arr = ['John', 'Jane', 'Jim'];
-
-for(var prop in arr) {
-    console.log(prop + ': ' + arr[prop]);
+//Another way to create objects: Object.create
+var person = {
+    firstName: 'Default',
+    lastName: 'Default',
+    greet: function () {
+        return 'Hi ' + this.firstName;
+    }
 }
-//0: John
-//1: Jane
-//2: Jim
-//myCustomFeature: cool!
 
-//O, 1, and 2 are the property names
-//An array is an object, each item is a unique property in the array
+var john = Object.create(person);
+console.log(john);//{}
 
-//In the case of arrays don't use "for in" because it loops through the properties INCLUDING whatever prototypes are added to Array
-
-//Instead use a regular for loop
-for(var i = 0; i < arr.length; i++) {
-    console.log(i + ': ' + arr[i]);
-}
-//0: John
-//1: Jane
-//2: Jim
+//Object.create creates an empty object with its prototype pointing at whatever you pass into Object.create
+//you override whatever you want to by adding the properties and methods to the object
+//Ex (Pure Prototypal Inheritance):
+john.firstName = 'John';
+john.lastName = 'Doe';
+console.log(john);//{firstName: "John", lastName: "Doe"}
+console.log(john.greet());//Hi John

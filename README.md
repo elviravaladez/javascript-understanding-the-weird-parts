@@ -466,8 +466,43 @@ for(var i = 0; i < arr.length; i++) {
 ```
 For this reason, avoid using for...in statements with arrays, and use for loops instead.
 
+#### `Object.create` and Pure Prototypal Inheritance
+Another way to create objects is to use `Object.create` syntax. `Object.create` creates an empty object with its prototype pointing at whatever you pass into `Object.create`. Then, you override whatever you want by adding the properties and methods to that object. This is also known as Pure Prototypal Inheritance.
 
+Example of using `Object.create` and how it creates an empty object:
+```js
+var person = {
+    firstName: 'Default',
+    lastName: 'Default',
+    greet: function () {
+        return 'Hi ' + this.firstName;
+    }
+}
 
+var john = Object.create(person);
+console.log(john);//{}
+```
+
+Example of overriding `firstName` and `lastName` properties of `john`:
+```js
+var person = {
+    firstName: 'Default',
+    lastName: 'Default',
+    greet: function () {
+        return 'Hi, ' + this.firstName;
+    }
+}
+
+var john = Object.create(person);
+
+john.firstName = 'John';
+john.lastName = 'Doe';
+
+console.log(john);//{firstName: "John", lastName: "Doe"}
+console.log(john.greet());//Hi, John
+```
+
+Polyfill: Code that adds a feature which the engine may lack.
 
 #### [Back To Top](#javascript-understanding-the-weird-parts)
 
