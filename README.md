@@ -433,6 +433,42 @@ a === b; //false (b/c they're not of the same type)
 ```
 In the example above, you're not really creating the number primitive when using the `new Number()` built-in function constructor. Because of this, when you are doing a strict comparison of `a` and `b` they are NOT equal. This is one reason why you should NOT use built-in function constructors.
 
+#### Arrays and for...in
+
+Because a for...in statement iterates overall all properties of an object, it's best to use a regular for loop with arrays.
+
+Here is an example of the output you would get if you used a for...in statement with the code below:
+```js
+Array.prototype.myCustomFeature = 'cool!';
+
+var arr = ['John', 'Jane', 'Jim'];
+
+for(var prop in arr) {
+    console.log(prop + ': ' + arr[prop]);
+}
+//0: John
+//1: Jane
+//2: Jim
+//myCustomFeature: cool!
+```
+You will notice that the output logged `myCustomFeature` as well as the other properties of the array.
+
+If you use a for loop, you avoid this issue all together. Example:
+```js
+Array.prototype.myCustomFeature = 'cool!';
+
+for(var i = 0; i < arr.length; i++) {
+    console.log(i + ': ' + arr[i]);
+}
+//0: John
+//1: Jane
+//2: Jim
+```
+For this reason, avoid using for...in statements with arrays, and use for loops instead.
+
+
+
+
 #### [Back To Top](#javascript-understanding-the-weird-parts)
 
 ## Author
