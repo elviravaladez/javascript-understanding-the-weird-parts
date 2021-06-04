@@ -435,7 +435,7 @@ In the example above, you're not really creating the number primitive when using
 
 #### Arrays and for...in
 
-Because a for...in statement iterates overall all properties of an object, it's best to use a regular for loop with arrays.
+Because a for...in statement iterates over all properties of an object, it's best to use a regular for loop with arrays.
 
 Here is an example of the output you would get if you used a for...in statement with the code below:
 ```js
