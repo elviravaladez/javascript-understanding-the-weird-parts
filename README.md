@@ -504,6 +504,40 @@ console.log(john.greet());//Hi, John
 
 Polyfill: Code that adds a feature which the engine may lack.
 
+#### ES6 And Classes
+A JavaScript class defines an object.
+
+Example:
+```js
+class Person {
+    constructor(firstName, lastName) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+    }
+    
+    greet() {
+        return 'Hi ' + firstName;
+    }
+}
+
+var john = new Person('John', 'Doe');
+```
+
+How to set a prototype (use the `extends` keyword):
+```js
+class InformalPerson extends Person {
+    constructor(firstName, lastName) {
+        super(firstName, lastName);
+    }
+    
+    greet() {
+        return 'Hello ' + firstName;
+    }
+}
+```
+
+Syntactic Sugar: A different way to type something that doesn't change how it works under the hood.
+
 #### [Back To Top](#javascript-understanding-the-weird-parts)
 
 ## Author
