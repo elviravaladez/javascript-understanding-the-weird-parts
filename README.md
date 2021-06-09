@@ -605,6 +605,44 @@ console.log(typeof null);//object (this is a bug in JavaScript)
 ```
 
 
+#### `use strict`
+
+With `use strict` you must declare a variable in order to set it equal to anything (in order to use it).
+`use strict` must go at the top of a file, if you want to use it across the ENTIRE file, OR `use strict` must go at the top of a function if you only want to use strict mode within a function.
+
+Example of `use strict` at the top of a file: 
+```js
+"use strict";
+
+function logNewPerson() {
+    var person2;
+    persom2 = {};
+    console.log(persom2);
+}
+
+var person;
+
+persom = {}; ////Uncaught ReferenceError: persom is not defined
+console.log(persom);
+logNewPerson();
+```
+
+Example of `use strict` at the top of a function:
+```js
+//within a function
+function logNewPerson() {
+    "use strict";
+
+    var person2;
+    persom2 = {};
+    console.log(persom2);
+}
+
+var person;
+persom = {};
+console.log(persom);//{}
+logNewPerson(); //Uncaught ReferenceError: persom2 is not defined at logNewPerson
+```
 #### [Back To Top](#javascript-understanding-the-weird-parts)
 
 ## Author
