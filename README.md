@@ -538,6 +538,35 @@ class InformalPerson extends Person {
 
 Syntactic Sugar: A different way to type something that doesn't change how it works under the hood.
 
+
+#### Initialization
+A clean way to initialize data that is also good for prototyping:
+```js
+var people = [
+    {
+        //object 1
+        firstName: 'John',
+        lastName: 'Doe',
+        addresses: [
+            '111 Main Street',
+            '222 Second Street'
+        ]
+    },
+    {
+        //second object
+        firstName: 'John',
+        lastName: 'Doe',
+        addresses: [
+            '333 Main Street',
+            '444 Second Street'
+        ],
+        greet: function() {
+            return 'Hello!';
+        }
+    }
+]
+```
+
 #### [Back To Top](#javascript-understanding-the-weird-parts)
 
 ## Author
