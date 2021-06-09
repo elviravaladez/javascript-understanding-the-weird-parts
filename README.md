@@ -567,6 +567,44 @@ var people = [
 ]
 ```
 
+#### `typeof`, `instanceof`, and Figuring Out What Something Is
+To figure out the type of something, use `typeof`.
+
+Example:
+```js
+var three = 3;
+console.log(typeof three);//number
+
+var hello = 'hello';
+console.log(typeof hello);//string
+
+var emptyObj = {};
+console.log(emptyObj);//object
+
+var emptyArr = [];
+console.log(emptyArr);//object (not recommended)
+console.log(Object.prototype.toString().call(emptyArr));//"[object Array]"  <-- recommended way
+
+var z = function () {};
+console.log(typeof z);//function
+```
+
+`instanceof` tells you if any objects down the prototype chain find the type of object. If so the first parameter is an instance of the second parameter. In the example below, the first parameter we are referring to is `jane` while the second parameter is the object `Person`:
+
+```js
+function Person(name) {
+    this.name = name;
+}
+
+var jane = new Person('Jane');
+console.log(typeof jane);//object
+console.log(jane instanceof Person);//returns true b/c jane is an instance of Person down the prototype chain
+
+console.log(typeof undefined);//undefined
+console.log(typeof null);//object (this is a bug in JavaScript)
+```
+
+
 #### [Back To Top](#javascript-understanding-the-weird-parts)
 
 ## Author
